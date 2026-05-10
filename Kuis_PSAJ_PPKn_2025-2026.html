@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan PSAJ PPKn 2025-2026</title>
+<style>
+:root {
+  --bg: #0d0f1a;
+  --surface: #131625;
+  --surface2: #1a1e30;
+  --surface3: #1f243a;
+  --border: rgba(100,120,220,0.18);
+  --border2: rgba(100,120,220,0.35);
+  --text: #e2e6f3;
+  --text-muted: #7a84a8;
+  --text-dim: #4a5270;
+  --accent: #5b7aff;
+  --accent-glow: rgba(91,122,255,0.15);
+  --accent2: #3ec8a0;
+  --accent2-glow: rgba(62,200,160,0.12);
+  --warn: #f0c060;
+  --warn-glow: rgba(240,192,96,0.12);
+  --danger: #f06080;
+  --danger-glow: rgba(240,96,128,0.12);
+  --success: #3ec8a0;
+  --success-glow: rgba(62,200,160,0.15);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --trans: 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.6}
+body{display:flex;flex-direction:column;align-items:center;padding:0 0 3rem}
+
+.screen{width:100%;max-width:740px;padding:1.5rem 1rem;animation:fadeUp 0.4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+@keyframes popIn{from{opacity:0;transform:scale(0.88)}to{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── START SCREEN ── */
+.start-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:2rem 1rem}
+.start-badge{background:var(--surface2);border:1px solid var(--border2);color:var(--accent);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:2rem}
+.start-title{font-size:clamp(2rem,6vw,3.2rem);font-weight:700;text-align:center;line-height:1.15;margin-bottom:0.6rem;background:linear-gradient(135deg,#7b9fff 0%,#b5caff 50%,#5b9fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.start-sub{color:var(--text-muted);text-align:center;font-size:0.95rem;margin-bottom:0.5rem}
+.start-meta{display:flex;gap:1.5rem;margin:1.5rem 0 2.5rem;flex-wrap:wrap;justify-content:center}
+.start-chip{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px}
+.start-chip span{color:var(--text)}
+.btn-start{background:var(--accent);color:#fff;border:none;border-radius:var(--radius);padding:14px 44px;font-size:1.05rem;font-weight:600;cursor:pointer;transition:var(--trans);letter-spacing:0.02em;box-shadow:0 0 28px rgba(91,122,255,0.25)}
+.btn-start:hover{background:#4a6aee;transform:translateY(-2px);box-shadow:0 0 36px rgba(91,122,255,0.38)}
+.btn-start:active{transform:translateY(0)}
+.deco-ring{width:180px;height:180px;border-radius:50%;border:1px solid var(--border);position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
+.deco-ring::before{content:'';position:absolute;width:140px;height:140px;border-radius:50%;border:1px solid rgba(91,122,255,0.25)}
+.deco-ring::after{content:'';position:absolute;width:100px;height:100px;border-radius:50%;background:var(--accent-glow);border:1px solid rgba(91,122,255,0.4)}
+.deco-icon{font-size:2.6rem;position:relative;z-index:1}
+
+/* ── PROGRESS ── */
+.progress-wrap{margin-bottom:1.4rem}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.q-count{font-size:12px;color:var(--text-muted);letter-spacing:0.05em}
+.q-points{font-size:12px;color:var(--accent);background:var(--accent-glow);border:1px solid rgba(91,122,255,0.25);border-radius:12px;padding:2px 10px}
+.progress-bar{height:4px;background:var(--surface3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1)}
+
+/* ── QUESTION CARD ── */
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem 1.8rem;margin-bottom:1rem;min-height:80px}
+.q-num-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;margin-bottom:0.9rem;letter-spacing:0.06em}
+.q-type-tag{display:inline-block;margin-left:8px;font-size:10px;color:var(--text-muted);background:var(--surface3);border:1px solid var(--border);border-radius:5px;padding:2px 8px;vertical-align:middle}
+.q-text{font-size:0.97rem;color:var(--text);line-height:1.7}
+.q-text em{color:var(--accent2);font-style:italic}
+.q-text strong{color:var(--warn);font-weight:600}
+.q-note{font-size:0.83rem;color:var(--text-muted);margin-top:0.6rem;padding:0.5rem 0.8rem;background:var(--surface2);border-left:3px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+
+/* ── CHOICES ── */
+.choices{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1rem}
+.choice{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.85rem 1.1rem;cursor:pointer;display:flex;align-items:flex-start;gap:12px;transition:var(--trans);position:relative;overflow:hidden}
+.choice::before{content:'';position:absolute;inset:0;background:var(--accent-glow);opacity:0;transition:opacity var(--trans)}
+.choice:hover{border-color:var(--border2);transform:translateX(3px)}
+.choice:hover::before{opacity:1}
+.choice.selected{border-color:var(--accent);background:rgba(91,122,255,0.1)}
+.choice.correct{border-color:var(--success);background:rgba(62,200,160,0.1);animation:popIn 0.3s ease}
+.choice.wrong{border-color:var(--danger);background:rgba(240,96,128,0.1);animation:popIn 0.3s ease}
+.choice.reveal-correct{border-color:var(--success);background:rgba(62,200,160,0.08)}
+.choice.disabled{cursor:default;transform:none}
+.choice-letter{flex-shrink:0;width:28px;height:28px;border-radius:6px;background:var(--surface3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text-muted);transition:var(--trans)}
+.choice.selected .choice-letter,.choice.correct .choice-letter{background:var(--accent);color:#fff;border-color:var(--accent)}
+.choice.wrong .choice-letter{background:var(--danger);color:#fff;border-color:var(--danger)}
+.choice.reveal-correct .choice-letter{background:var(--success);color:#fff;border-color:var(--success)}
+.choice-text{font-size:0.9rem;line-height:1.5;color:var(--text);padding-top:4px;flex:1}
+.choice-icon{margin-left:auto;flex-shrink:0;font-size:1.1rem;opacity:0;transition:opacity 0.2s}
+.choice.correct .choice-icon,.choice.reveal-correct .choice-icon{opacity:1;color:var(--success)}
+.choice.wrong .choice-icon{opacity:1;color:var(--danger)}
+
+/* TF choices */
+.tf-choices{display:flex;gap:0.8rem;margin-bottom:1rem}
+.tf-btn{flex:1;padding:1rem;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:0.95rem;font-weight:600;color:var(--text-muted);transition:var(--trans);text-align:center}
+.tf-btn:hover{border-color:var(--border2);color:var(--text)}
+.tf-btn.selected{border-color:var(--accent);background:rgba(91,122,255,0.1);color:var(--accent)}
+.tf-btn.correct{border-color:var(--success);background:rgba(62,200,160,0.1);color:var(--success)}
+.tf-btn.wrong{border-color:var(--danger);background:rgba(240,96,128,0.1);color:var(--danger)}
+.tf-btn.reveal-correct{border-color:var(--success);background:rgba(62,200,160,0.08);color:var(--success)}
+.tf-btn.disabled{cursor:default}
+
+/* Multi choices */
+.multi-note{font-size:11px;color:var(--warn);background:rgba(240,192,96,0.08);border:1px solid rgba(240,192,96,0.2);border-radius:6px;padding:5px 10px;margin-bottom:0.6rem;display:inline-block}
+
+/* ── FEEDBACK ── */
+.feedback{border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.88rem;margin-bottom:0.8rem;display:none;animation:fadeIn 0.3s ease}
+.feedback.correct{display:block;background:rgba(62,200,160,0.08);border:1px solid rgba(62,200,160,0.3);color:var(--success)}
+.feedback.wrong{display:block;background:rgba(240,96,128,0.08);border:1px solid rgba(240,96,128,0.3);color:var(--danger)}
+
+/* ── HINT ── */
+.hint-wrap{margin-bottom:1rem}
+.btn-hint{background:none;border:1px solid var(--border2);border-radius:var(--radius-sm);padding:8px 16px;color:var(--text-muted);font-size:13px;cursor:pointer;transition:var(--trans);display:flex;align-items:center;gap:6px;width:100%;justify-content:center}
+.btn-hint:hover{border-color:var(--warn);color:var(--warn);background:var(--warn-glow)}
+.hint-box{background:var(--surface2);border:1px solid rgba(240,192,96,0.25);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;color:var(--warn);margin-top:0.5rem;display:none;animation:fadeIn 0.3s ease;line-height:1.6}
+.hint-box.visible{display:block}
+
+/* ── NAV ── */
+.nav-row{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem}
+.btn-nav{flex:1;padding:12px 18px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--surface2);color:var(--text-muted);font-size:0.9rem;font-weight:600;cursor:pointer;transition:var(--trans);display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.btn-nav:disabled{opacity:0.3;cursor:not-allowed;pointer-events:none}
+.btn-nav.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-nav.primary:hover{background:#4a6aee;border-color:#4a6aee}
+.btn-nav.finish{background:var(--accent2);border-color:var(--accent2);color:#0d0f1a;font-weight:700}
+.btn-nav.finish:hover{background:#35b890;border-color:#35b890}
+
+/* ── SUMMARY ── */
+.summary-hero{text-align:center;padding:2rem 1rem 1.5rem}
+.score-ring{width:130px;height:130px;margin:0 auto 1.2rem;position:relative}
+.score-ring svg{width:130px;height:130px;transform:rotate(-90deg)}
+.score-ring circle{fill:none;stroke-width:10;stroke-linecap:round}
+.score-ring .track{stroke:var(--surface3)}
+.score-ring .fill{stroke:var(--accent);transition:stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1)}
+.score-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-val{font-size:2rem;font-weight:700;color:var(--text)}
+.score-max{font-size:11px;color:var(--text-muted)}
+.summary-grade{font-size:1.5rem;font-weight:700;margin-bottom:0.3rem}
+.summary-msg{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem;margin-bottom:1.5rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.9rem;text-align:center}
+.stat-val{font-size:1.5rem;font-weight:700;margin-bottom:2px}
+.stat-val.green{color:var(--success)}
+.stat-val.red{color:var(--danger)}
+.stat-val.blue{color:var(--accent)}
+.stat-label{font-size:11px;color:var(--text-muted)}
+.review-list{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem}
+.review-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.7rem 1rem;display:flex;align-items:flex-start;gap:10px;font-size:0.85rem}
+.review-item.correct-item{border-left:3px solid var(--success)}
+.review-item.wrong-item{border-left:3px solid var(--danger)}
+.review-dot{flex-shrink:0;width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:1px}
+.review-dot.c{background:rgba(62,200,160,0.2);color:var(--success)}
+.review-dot.w{background:rgba(240,96,128,0.2);color:var(--danger)}
+.review-q{flex:1;color:var(--text-muted);line-height:1.4}
+.review-q strong{color:var(--text);display:block;margin-bottom:2px}
+.section-title{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin:1.2rem 0 0.6rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border)}
+.btn-retry{background:var(--accent);color:#fff;border:none;border-radius:var(--radius);padding:12px 36px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:var(--trans);display:block;margin:0 auto}
+.btn-retry:hover{background:#4a6aee;transform:translateY(-2px)}
+
+/* footer */
+.footer-copy{text-align:center;font-size:11px;color:var(--text-dim);padding:1.5rem 0 0;letter-spacing:0.05em}
+
+/* responsive */
+@media(max-width:520px){
+  .q-card{padding:1.2rem 1rem}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .start-title{font-size:1.8rem}
+  .deco-ring{width:140px;height:140px}
+  .deco-ring::before{width:108px;height:108px}
+  .deco-ring::after{width:76px;height:76px}
+}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+const ALL_QUESTIONS = [
+  {
+    id:1, points:2, type:'single',
+    text:'Tujuan dibentuknya BPUPKI adalah ....',
+    choices:['Menyelidiki persiapan pembentukan negara Indonesia Merdeka','Mempersiapkan strategi menghadapi pasukan sekutu','Menyiapkan teks proklamasi kemerdekaan Indonesia','Mempersiapkan masuknya wilayah Indonesia ke pemerintahan Jepang'],
+    answer:0,
+    hint:'BPUPKI = Badan Penyelidik Usaha-usaha Persiapan Kemerdekaan Indonesia. Kata kunci ada di singkatannya.'
+  },
+  {
+    id:2, points:2, type:'single',
+    text:'Lembaga BPUPKI dibentuk pada tanggal ....',
+    choices:['1 Februari 1945','1 Maret 1945','29 Mei 1945','22 Juni 1945'],
+    answer:1,
+    hint:'BPUPKI dibentuk oleh Jepang pada tahun 1945, tepatnya bulan Maret.'
+  },
+  {
+    id:3, points:2, type:'single',
+    text:'Perhatikan kutipan pidato Ir. Soekarno berikut:\n\n"Kita hendak mendirikan suatu negara \'semua buat semua\'. Bukan buat satu orang, bukan buat satu golongan, baik golongan bangsawan, maupun golongan yang kaya — tetapi \'semua buat semua\'.\"\n\nMakna mendalam dari kutipan pidato di atas mencerminkan prinsip ....',
+    choices:['Monarki absolut','Demokrasi yang inklusif dan keadilan sosial','Persaingan ekonomi liberal','Dominasi kelompok mayoritas atas minoritas'],
+    answer:1,
+    hint:'"Semua buat semua" = inklusif, tidak memihak satu golongan = ciri demokrasi yang adil.'
+  },
+  {
+    id:4, points:2, type:'single',
+    text:'Pada sidang BPUPKI ke-1, seorang tokoh bangsa mengusulkan nama dasar negara Indonesia yaitu Pancasila. Beliau mencetuskan nama Pancasila atas usulan seorang teman. Tokoh bangsa yang dimaksud ialah ....',
+    choices:['Soekarno','Soepomo','M. Yamin','Rajiman Wedyodiningrat'],
+    answer:0,
+    hint:'Tokoh yang berpidato pada 1 Juni 1945 dan mencetuskan istilah "Pancasila" sebagai dasar negara.'
+  },
+  {
+    id:5, points:2, type:'multi',
+    text:'Panitia Sembilan dibentuk pada masa reses BPUPKI dengan tugas utama menyusun naskah rancangan Pembukaan Undang-Undang Dasar. Tokoh yang menjadi anggota Panitia Sembilan adalah .... (pilih 2 jawaban yang benar)',
+    choices:['Achmad Soebardjo','Wachid Hasjim','Moh. Hatta','Soekarno'],
+    answer:[1,2],
+    hint:'Panitia Sembilan terdiri dari 9 tokoh. Wachid Hasjim dan Moh. Hatta adalah dua di antaranya yang sering diujikan.'
+  },
+  {
+    id:6, points:2, type:'single',
+    text:'Makna Pancasila sebagai pandangan hidup bangsa Indonesia ialah ....',
+    choices:['Pancasila sebagai pedoman hidup dalam penyelenggaraan negara','Pancasila sebagai panduan aktivitas masyarakat sehari-hari','Pancasila sebagai acuan dalam perumusan negara','Pancasila sebagai panduan dalam masa lalu bangsa'],
+    answer:1,
+    hint:'Pandangan hidup = bagaimana seseorang atau bangsa menjalani keseharian, bukan hanya penyelenggaraan negara.'
+  },
+  {
+    id:7, points:2, type:'tf',
+    text:'Kedudukan Pancasila sebagai sumber dari segala hukum memiliki makna bahwa semua produk aturan negara tidak boleh menyimpang dari nilai-nilai Pancasila.\n\nBenar atau Salah?',
+    choices:['Benar (True)','Salah (False)'],
+    answer:0,
+    hint:'Pancasila adalah sumber dari segala sumber hukum — semua peraturan harus berlandaskan Pancasila.'
+  },
+  {
+    id:8, points:2, type:'single',
+    text:'Sekolah memiliki tata tertib agar kehidupan di sekolah berjalan dengan baik dan tidak ada tindakan-tindakan yang tercela. Pentingnya tata tertib di sekolah selaras dengan pengamalan Pancasila sila ke ....',
+    choices:['Sila ke-2','Sila ke-3','Sila ke-4','Sila ke-5'],
+    answer:2,
+    hint:'Tata tertib berkaitan dengan musyawarah dan kesepakatan bersama — ciri Sila ke-4 tentang hikmat kebijaksanaan.'
+  },
+  {
+    id:9, points:2, type:'single',
+    text:'Saat Fahrezy presentasi kelompok, dia ternyata tidak dapat menyebutkan huruf "R" dengan sempurna (cadel) sehingga teman-temannya menertawakan Fahrezy. Sikap teman-temannya ini merupakan bentuk perundungan yang menyimpang dari pelaksanaan Pancasila sila ke ....',
+    choices:['Sila ke-1','Sila ke-2','Sila ke-3','Sila ke-4'],
+    answer:1,
+    hint:'Menertawakan kekurangan fisik/kondisi seseorang = melanggar Kemanusiaan yang Adil dan Beradab (Sila ke-2).'
+  },
+  {
+    id:10, points:2, type:'single',
+    text:'Perhatikan pernyataan di bawah ini!\n1. Nilai-nilai Pancasila merupakan kesepakatan kelompok tertentu\n2. Nilai-nilai Pancasila bersifat universal namun terpisah dengan sila-sila lainnya\n3. Pancasila adalah nilai bersama yang mampu mempersatukan bangsa\n4. Pancasila adalah nilai yang dicita-citakan bersama masyarakat\n\nDari pernyataan di atas, nilai positif Pancasila ditunjukkan oleh nomor ....',
+    choices:['1 dan 2','1 dan 3','2 dan 3','3 dan 4'],
+    answer:3,
+    hint:'Pernyataan positif = yang meneguhkan peran Pancasila. Nomor 1 dan 2 mengandung unsur yang keliru.'
+  },
+  {
+    id:11, points:2, type:'single',
+    text:'Indonesia secara tegas menyuarakan tentang perdamaian di Palestina dan mendukung kemerdekaan Palestina di bawah penjajahan zionis Israel.\n\nPernyataan tersebut menunjukkan pelaksanaan tujuan negara Indonesia yang tercantum pada Alinea ke-4 Pembukaan UUD NRI Tahun 1945 yaitu ....',
+    choices:['Melindungi segenap bangsa','Memajukan kesejahteraan umum','Mencerdaskan kehidupan bangsa','Melaksanakan ketertiban dunia'],
+    answer:3,
+    hint:'Ikut serta dalam perdamaian dunia = salah satu dari 4 tujuan negara di alinea ke-4, khususnya tentang "ketertiban dunia".'
+  },
+  {
+    id:12, points:2, type:'tf',
+    text:'Jika seorang siswa memberikan usul perbaikan peraturan OSIS melalui jalur musyawarah yang tertib, maka ia telah menjalankan tata tertib sesuai dengan nilai Sila ke-4 Pancasila.\n\nBenar atau Salah?',
+    choices:['Benar (True)','Salah (False)'],
+    answer:0,
+    hint:'Sila ke-4 = musyawarah mufakat. Menyampaikan usul melalui jalur resmi dan tertib = sesuai Sila ke-4.'
+  },
+  {
+    id:13, points:2, type:'single',
+    text:'Ancaman terbesar terhadap persatuan dan kesatuan bangsa yang bertentangan dengan nilai Pancasila dan Bhinneka Tunggal Ika adalah ....',
+    choices:['Perbedaan pendapat','Perkembangan ideologi','Radikalisme dan intoleransi','Pembangunan infrastruktur'],
+    answer:2,
+    hint:'Perbedaan pendapat adalah hal wajar. Yang mengancam persatuan secara serius adalah sikap ekstrem yang tidak menoleransi perbedaan.'
+  },
+  {
+    id:14, points:2, type:'single',
+    text:'[Gambar: Siswa-siswi dari berbagai latar belakang suku dan budaya sedang bekerja sama dalam satu kelompok di lingkungan sekolah]\n\nSituasi pada gambar tersebut menunjukkan pengamalan nilai kebhinekaan di lingkungan sekolah yang paling tepat adalah ....',
+    choices:['Menonjolkan budaya daerah masing-masing agar mendapatkan pujian dari guru','Membentuk kelompok belajar hanya dengan teman yang memiliki latar belakang suku yang sama agar komunikasi lebih mudah','Menghargai perbedaan latar belakang sebagai kekuatan untuk mencapai tujuan bersama melalui kerja sama yang harmonis','Memberikan tugas yang lebih berat kepada siswa dari kelompok minoritas agar adil dalam pembagian kerja'],
+    answer:2,
+    hint:'Bhinneka Tunggal Ika = berbeda-beda tetapi tetap satu. Perbedaan adalah kekuatan, bukan hambatan.'
+  },
+  {
+    id:15, points:2, type:'single',
+    text:'Dalam situasi konflik sosial, di bawah ini sikap yang tepat untuk mencerminkan Sila ke-4 Pancasila adalah ....',
+    choices:['Mempertahankan pendapat sendiri tanpa mendengarkan orang lain','Melibatkan semua pihak dalam dialog untuk mencari solusi','Menggunakan kekerasan untuk menyelesaikan masalah','Menyalahkan pihak lain tanpa mencari jalan keluar'],
+    answer:1,
+    hint:'Sila ke-4 = musyawarah untuk mufakat. Melibatkan semua pihak = musyawarah.'
+  },
+  {
+    id:16, points:2, type:'single',
+    text:'Menurut Kamus Besar Bahasa Indonesia, pengertian norma adalah ....',
+    choices:['Aturan-aturan ataupun sanksi-sanksi yang bertujuan untuk mendorong atau menekan anggota','Pedoman/panduan manusia dalam kehidupan bermasyarakat, berbangsa, dan bernegara agar tercipta kehidupan yang aman, tertib dan harmonis','Aturan ataupun ketentuan yang mengikat warga kelompok dalam masyarakat yang digunakan sebagai panduan, tatanan, dan pengendali tingkah laku yang sesuai dan diterima','Aturan-aturan atau pedoman sosial yang khusus mengenai tingkah laku, sikap, dan perbuatan yang boleh dilakukan dan tidak boleh dilakukan di lingkungan kehidupannya'],
+    answer:2,
+    hint:'KBBI mendefinisikan norma sebagai aturan/ketentuan yang mengikat dan menjadi panduan tingkah laku yang diterima masyarakat.'
+  },
+  {
+    id:17, points:2, type:'tf',
+    text:'Norma hukum dapat diabaikan jika seorang pejabat negara merasa bahwa keputusan pribadinya lebih memberikan keuntungan bagi kelompoknya dibandingkan mengikuti prosedur aturan yang berlaku.\n\nSetuju (Benar) atau Tidak Setuju (Salah)?',
+    choices:['Benar (True)','Salah (False)'],
+    answer:1,
+    hint:'Prinsip rule of law: semua orang, termasuk pejabat, tunduk pada hukum. Tidak ada yang boleh mengabaikan norma hukum.'
+  },
+  {
+    id:18, points:2, type:'single',
+    text:'Seorang warga negara memiliki hak untuk mendapatkan pendidikan. Di sisi lain, ia memiliki kewajiban untuk mengikuti pendidikan dasar. Berdasarkan pernyataan ini, kewajiban berfungsi untuk ....',
+    choices:['Membatasi hak yang dimiliki oleh warga negara','Menambah beban finansial bagi keluarga kurang mampu','Menghapuskan hak warga negara yang kurang patuh','Memastikan bahwa setiap warga negara memiliki kualitas dasar yang baik melalui pendidikan'],
+    answer:3,
+    hint:'Kewajiban wajib belajar bukan untuk membebani, melainkan memastikan semua warga mendapat standar pendidikan dasar.'
+  },
+  {
+    id:19, points:2, type:'single',
+    text:'Setelah proklamasi kemerdekaan pada 17 Agustus 1945, Indonesia memerlukan landasan hukum tertulis sebagai syarat berdirinya negara. Lembaga yang secara resmi menetapkan UUD NRI Tahun 1945 sebagai konstitusi negara Indonesia adalah ....',
+    choices:['BPUPKI','PPKI','KNIP','MPR'],
+    answer:1,
+    hint:'PPKI = Panitia Persiapan Kemerdekaan Indonesia, bersidang 18 Agustus 1945 dan mengesahkan UUD 1945.'
+  },
+  {
+    id:20, points:2, type:'multi',
+    text:'UUD NRI Tahun 1945 telah mengalami empat kali rangkaian amandemen antara tahun 1999 hingga 2002. Di bawah ini pernyataan yang menyajikan data benar mengenai jumlah Bab dan Pasal UUD 1945 yaitu .... (pilih 2 jawaban yang benar)',
+    choices:['Setelah amandemen, jumlah Bab dalam UUD NRI Tahun 1945 berkembang menjadi 21 Bab','Sebelum amandemen, jumlah pasal yang terkandung di dalamnya adalah 37 pasal','Sebelum amandemen, UUD NRI Tahun 1945 terdiri dari 17 Bab','Sebelum amandemen, UUD NRI Tahun 1945 memiliki 49 ayat, sedangkan sesudah amandemen menjadi 170 ayat'],
+    answer:[0,1],
+    hint:'Sebelum amandemen: 16 Bab, 37 Pasal. Setelah amandemen: 21 Bab, 73 Pasal.'
+  },
+  {
+    id:21, points:2, type:'single',
+    text:'Pernyataan di bawah ini yang benar adalah ....',
+    choices:['Negara Republik menggunakan sistem pemilu dalam pergantian kekuasaan','Negara Monarki menggunakan sistem pemilu dalam pergantian kekuasaan','Negara Republik menggunakan sistem warisan keluarga dalam pergantian kekuasaan','Negara Monarki menggunakan sistem pergantian kekuasaan secara turun-temurun dengan pemilu'],
+    answer:0,
+    hint:'Republik = dipimpin oleh perwakilan rakyat yang dipilih melalui pemilu. Monarki = kekuasaan turun-temurun.'
+  },
+  {
+    id:22, points:2, type:'single',
+    text:'Salah satu ciri-ciri bentuk pemerintahan republik adalah ....',
+    choices:['Pergantian kekuasaan dilakukan secara turun-menurun','Pemimpin negara mempunyai kekuasaan negaranya yang tidak terbatas','Pergantian kekuasaan dilakukan melalui alur pemilihan umum yang jujur, adil, rahasia','Jabatan kepala negara bisa berkali-kali atau seumur hidup melalui mekanisme pemilu'],
+    answer:2,
+    hint:'Ciri khas republik: pemimpin dipilih rakyat melalui pemilu yang demokratis (LUBER JURDIL).'
+  },
+  {
+    id:23, points:2, type:'single',
+    text:'Prinsip negara Republik menekankan bahwa kekuasaan berasal dari rakyat dan ditujukan untuk kepentingan umum, di mana setiap warga negara memiliki kedudukan yang sama di depan hukum.\n\nDi bawah ini perilaku masyarakat yang secara langsung bertentangan dengan prinsip tersebut yaitu ....',
+    choices:['Memberikan kritik dan saran kepada pemerintah melalui kanal resmi media sosial secara sopan','Menggunakan hak suara dalam pemilihan kepala daerah berdasarkan hati nurani tanpa paksaan','Praktik pemberian fasilitas khusus atau "jalur orang dalam" bagi kerabat pejabat dalam seleksi penerimaan pegawai negeri','Membentuk komunitas kerelawanan untuk membantu korban bencana alam tanpa memandang latar belakang suku'],
+    answer:2,
+    hint:'"Jalur orang dalam" = nepotisme, bertentangan dengan prinsip kesamaan di depan hukum dan kepentingan umum.'
+  },
+  {
+    id:24, points:2, type:'single',
+    text:'Makna dari "the rule of law, not of man" adalah ....',
+    choices:['Semua permasalahan yang terjadi di dalam masyarakat diselesaikan secara hukum','Setiap warga negara sama kedudukannya di mata hukum, tidak ada perbedaan','Hukum sebagai sistem, bukan perorangan yang bertindak sebagai pengatur','Semua kebijakan dan tindakan pemerintah harus didasarkan hukum'],
+    answer:2,
+    hint:'"Not of man" = bukan manusia/orang yang berkuasa, melainkan hukum sebagai sistem yang menjadi pengatur.'
+  },
+  {
+    id:25, points:2, type:'multi',
+    text:'Negara Indonesia merupakan negara yang berbentuk Republik sekaligus menganut sistem Demokrasi. Di bawah ini dua pernyataan yang paling tepat dalam menganalisis perbedaan atau hubungan kedua prinsip tersebut yaitu .... (pilih 2 jawaban yang benar)',
+    choices:['Prinsip Republik menekankan bahwa suksesi kepemimpinan negara dilakukan secara turun-temurun melalui garis darah bangsawan','Prinsip Demokrasi menitikberatkan pada kedaulatan ada di tangan rakyat, di mana rakyat memiliki hak untuk berpartisipasi dalam pengambilan kebijakan publik','Dalam sebuah Republik, negara dianggap sebagai Res Publica (urusan publik), sehingga segala kebijakan harus didasarkan pada kepentingan umum, bukan kepentingan pribadi penguasa','Republik hanya berfokus pada kebebasan individu secara mutlak, sedangkan Demokrasi hanya berfokus pada pelaksanaan pemilu setiap lima tahun sekali'],
+    answer:[1,2],
+    hint:'Demokrasi = kedaulatan rakyat. Republik = Res Publica (urusan publik untuk kepentingan umum).'
+  },
+  {
+    id:26, points:2, type:'single',
+    text:'Pelaksanaan hak dan kewajiban harus seimbang karena ....',
+    choices:['Hak menjamin kelangsungan hidup, sedangkan kewajiban hanya dilakukan secara perlu','Hak dan Kewajiban dilaksanakan sebagai pelaksanaan aturan pemerintah','Hak dan Kewajiban merupakan bagian keseimbangan hidup','Tidak ada kewajiban maka hak tetap jalan'],
+    answer:2,
+    hint:'Hak dan kewajiban ibarat dua sisi mata uang — keduanya adalah bagian dari keseimbangan kehidupan bermasyarakat.'
+  },
+  {
+    id:27, points:2, type:'single',
+    text:'Contoh pelaksanaan kewajiban yang sesuai dengan Sila ke-3 Pancasila (Persatuan Indonesia) adalah ....',
+    choices:['Menghormati seseorang yang sedang menjalankan ibadah','Membantu seseorang tanpa melihat latar belakangnya','Mendengar pendapat orang lain dengan seksama','Menghargai keberagaman budaya'],
+    answer:3,
+    hint:'Sila ke-3 = Persatuan Indonesia. Menghargai keberagaman budaya = menjaga persatuan di tengah perbedaan.'
+  },
+  {
+    id:28, points:2, type:'multi',
+    text:'Media sosial adalah sarana komunikasi yang sangat luas, namun penggunaannya harus dibarengi dengan etika dan sikap yang bijak. Di bawah ini dua sikap yang paling tepat dan mencerminkan penggunaan media sosial yang bertanggung jawab yaitu .... (pilih 2 jawaban yang paling tepat)',
+    choices:['Selalu membagikan berita atau informasi yang menarik ke banyak grup meskipun belum dipastikan kebenarannya','Melakukan pengecekan fakta terlebih dahulu sebelum memberikan komentar atau menyebarkan sebuah unggahan','Menggunakan fitur komentar untuk memberikan pendapat yang jujur secara bebas, meskipun mengandung kata-kata yang menyinggung fisik (body shaming) orang lain','Menghargai privasi diri sendiri dan orang lain dengan tidak menyebarkan data pribadi atau informasi rahasia ke ruang publik'],
+    answer:[1,3],
+    hint:'Penggunaan medsos bertanggung jawab = cek fakta dulu + jaga privasi. Hindari menyebar hoax dan body shaming.'
+  },
+  {
+    id:29, points:2, type:'tf',
+    text:'Mengunggah kritik terhadap kebijakan pemerintah di media sosial diperbolehkan asalkan disertai dengan data yang valid dan tidak mengandung unsur fitnah.\n\nBenar atau Salah?',
+    choices:['Benar (True)','Salah (False)'],
+    answer:0,
+    hint:'Kebebasan berpendapat dijamin UUD, termasuk mengkritik pemerintah, selama berbasis fakta dan tidak memfitnah.'
+  },
+  {
+    id:30, points:2, type:'single',
+    text:'Perhatikan narasi berikut ini:\n\n"Terdapat sekelompok warga yang berkumpul di sebuah lapangan terbuka. Mereka membawa spanduk berisi aspirasi, menggunakan pengeras suara untuk menyampaikan orasi secara bergantian, dan bergerak bersama-sama menuju satu titik lokasi (seperti kantor pemerintahan) untuk menyampaikan tuntutan mereka secara damai."\n\nBerdasarkan deskripsi tersebut, bentuk penyampaian pendapat di muka umum disebut dengan ....',
+    choices:['Rapat Umum','Mimbar Bebas','Demonstrasi (Unjuk Rasa)','Pawai'],
+    answer:2,
+    hint:'Bergerak bersama menuju satu lokasi sambil membawa aspirasi = demonstrasi/unjuk rasa. Pawai = berjalan tanpa tujuan menyampaikan tuntutan.'
+  },
+  {
+    id:31, points:2, type:'single',
+    text:'Perhatikan percakapan antara dua orang teman di bawah ini:\n\nAsep: "Kamana waé atuh, nembe katingal deui? Kumaha damang?"\nDadang: "Pangestu, nuju repot sakedik di rorompok. Ai Akang kumaha, sawangsulna?"\n\nBerdasarkan kosa kata dan dialek yang digunakan dalam dialog di atas, dapat disimpulkan bahwa kedua orang tersebut berasal dari suku ....',
+    choices:['Suku Jawa (Jawa Tengah/Jawa Timur)','Suku Sunda','Suku Madura','Suku Betawi'],
+    answer:1,
+    hint:'"Kamana waé", "kumaha damang", "rorompok" adalah kata-kata dalam bahasa Sunda.'
+  },
+  {
+    id:32, points:2, type:'single',
+    text:'Perhatikan tabel di bawah ini:\n\nNo. 1 | Cik Cik Periuk | Kalimantan Barat\nNo. 2 | Lancang Kuning | Riau\nNo. 3 | Angin Mamiri | Sulawesi Selatan\nNo. 4 | Sajojo | Papua\n\nBerdasarkan tabel tersebut, pasangan yang menunjukkan hubungan yang tepat antara lagu daerah dan asal provinsinya adalah ....',
+    choices:['1, 2, dan 3','1, 3, dan 4','2, 3, dan 4','1, 2, 3, dan 4'],
+    answer:1,
+    hint:'"Lancang Kuning" adalah lagu daerah Riau — tetapi ada yang perlu dicek. Cik Cik Periuk (Kalbar), Angin Mamiri (Sulsel), Sajojo (Papua) sudah benar.'
+  },
+  {
+    id:33, points:2, type:'single',
+    text:'Perhatikan teks di bawah ini:\n\nHarmoni dalam Kesederhanaan Suku Baduy\nMasyarakat suku Baduy di Desa Kanekes, Banten, dikenal sangat teguh dalam memegang adat istiadat Pikukuh. Salah satu prinsip utama mereka adalah "Lojor teu meunang dipotong, pondok teu meunang disambung" (Panjang tidak boleh dipotong, pendek tidak boleh disambung). Prinsip ini bukan hanya berlaku bagi alam, tetapi juga dalam interaksi sosial. Meskipun mereka hidup mengisolasi diri dari teknologi modern (terutama Baduy Dalam), mereka tetap menerima kedatangan pengunjung dari berbagai latar belakang suku dan agama dengan tangan terbuka, asalkan pengunjung menghormati aturan adat yang berlaku.\n\nBerdasarkan artikel di atas, pernyataan yang paling tepat menggambarkan nilai masyarakat Baduy dalam menjaga keberagaman adalah ....',
+    choices:['Mengharuskan setiap pendatang untuk mengikuti keyakinan adat mereka agar tercipta keseragaman budaya','Menutup diri sepenuhnya dari dunia luar agar tidak terjadi akulturasi dengan kebudayaan asing','Menjunjung tinggi sikap toleransi dengan menerima perbedaan latar belakang pengunjung selama aturan adat tetap dihormati','Mengutamakan pembangunan teknologi modern di wilayahnya agar dapat bersaing dengan suku bangsa lain'],
+    answer:2,
+    hint:'Masyarakat Baduy menerima pengunjung dari latar belakang apapun = toleransi. Asalkan menghormati adat = ada batasan yang wajar.'
+  },
+  {
+    id:34, points:2, type:'single',
+    text:'Perhatikan teks di bawah ini:\n\nBatik: Dari Identitas Lokal Menuju Panggung Dunia\nBatik bukan sekadar kain bermotif, melainkan warisan leluhur yang sarat akan filosofi. Di tengah derasnya arus globalisasi dan masuknya tren busana barat, Pemerintah Indonesia menetapkan penggunaan seragam batik bagi pegawai negeri dan pelajar pada hari-hari tertentu. Selain itu, pengakuan UNESCO terhadap batik sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi membuat masyarakat dari Sabang sampai Merauke merasa bangga mengenakan batik dalam berbagai acara resmi maupun santai. Fenomena ini berhasil memupuk rasa memiliki yang sama di antara warga negara Indonesia yang memiliki latar belakang suku yang berbeda-beda.\n\nBerdasarkan artikel di atas, simpulan yang paling tepat mengenai fungsi kebudayaan nasional bagi bangsa Indonesia adalah ....',
+    choices:['Sebagai sarana untuk meningkatkan pendapatan devisa negara melalui ekspor komoditas kain tradisional','Sebagai alat pemersatu bangsa yang dapat menciptakan rasa identitas kolektif dan kebanggaan bersama di tengah keberagaman','Sebagai satu-satunya benteng hukum untuk melarang masuknya kebudayaan asing ke dalam negeri','Sebagai media untuk menyeragamkan seluruh motif pakaian daerah agar menjadi satu jenis motif saja'],
+    answer:1,
+    hint:'Batik dipakai dari Sabang sampai Merauke = rasa memiliki bersama = fungsi pemersatu bangsa.'
+  },
+  {
+    id:35, points:2, type:'single',
+    text:'[Gambar empat tarian daerah dengan label daerah asal]\nGambar A: tarian + label MALUKU\nGambar B: tarian + label SUMATERA SELATAN\nGambar C: tarian + label JAKARTA\nGambar D: tarian + label JAWA TIMUR\n\nDi bawah ini pasangan gambar tarian daerah dengan asal daerah yang benar adalah ....',
+    choices:['Gambar A — Maluku','Gambar B — Sumatera Selatan','Gambar C — Jakarta','Gambar D — Jawa Timur'],
+    answer:2,
+    hint:'Tari Betawi (Ondel-Ondel, Tari Topeng Betawi) berasal dari Jakarta. Pilihan C menunjukkan tarian khas Jakarta.'
+  },
+  {
+    id:36, points:2, type:'multi',
+    text:'Perhatikan infografis "Langkah Bijak Hadapi Hoax" yang memuat langkah-langkah: Verifikasi Sumber, Periksa Fakta, Hindari Sensasi, Tinjau Isi Berita.\n\nBerdasarkan infografis tersebut, dua tindakan di bawah ini yang merupakan cara paling efektif untuk menganalisis dan menangkal berita bohong sebelum membagikannya ke media sosial yaitu .... (pilih 2 jawaban yang benar)',
+    choices:['Langsung membagikan berita tersebut jika isinya sesuai dengan pandangan pribadi agar orang lain segera tahu','Melakukan penelusuran ulang menggunakan mesin pencari untuk memastikan kebenaran foto atau gambar yang disertakan dalam berita','Mengabaikan tanggal pengunggahan berita asalkan nama narasumber yang dicantumkan terlihat meyakinkan','Membandingkan konten berita yang diterima dengan informasi dari situs web klarifikasi fakta yang kredibel'],
+    answer:[1,3],
+    hint:'Dua cara efektif = periksa gambar/fakta di mesin pencari + bandingkan dengan sumber fact-checking terpercaya.'
+  },
+  {
+    id:37, points:2, type:'single',
+    text:'Dalam memahami suatu tradisi, kita perlu memperhatikan nilai-nilai yang terkandung di dalamnya. Salah satu contoh filosofi hidup cageur, bageur, bener, singer, pinter dari suku Sunda. Nilai utama yang didapatkan dari filosofi Singer yaitu bila dikaitkan dengan kehidupan saat ini adalah ....',
+    choices:['Sehat secara jasmani dan rohani, pikiran dan mental, memiliki pendirian, bertutur, berbahasa, serta bekerja','Melakukan pekerjaan sesuai amanat, menjalankan ajaran agama dengan baik, menjadi pemimpin yang baik, serta tidak merusak lingkungan','Pandai atau cerdas, mampu beradaptasi, menyelesaikan permasalahan, bijaksana, dan tidak mudah curiga kepada orang lain','Mawas diri, teliti atau cermat dalam bekerja, memprioritaskan orang lain terlebih dahulu sebelum diri sendiri, menghormati pendapat atau gagasan orang lain, penuh rasa kasih sayang, serta menerima kritik dengan sikap yang baik'],
+    answer:3,
+    hint:'"Singer" dalam bahasa Sunda berarti peka/mawas diri dan penuh perhatian terhadap orang lain.'
+  },
+  {
+    id:38, points:2, type:'single',
+    text:'Kearifan lokal sering kali berperan penting dalam menjaga keberlanjutan lingkungan. Salah satu contoh kearifan lokal yang ada di suku Baduy di Provinsi Banten adalah "Lojor Teu Meunang Dipotong, Pondok Teu Meunang Disambung". Tujuan utama dari kearifan lokal tersebut adalah ....',
+    choices:['Menjaga toleransi, solidaritas di antara kelompok masyarakat','Menjaga keharmonisan dan keselarasan antara manusia dengan Tuhan','Menerapkan pola hidup sederhana, tidak berlebihan, serakah, dan rakus kepada alam','Menjaga tutur kata dalam berbicara dan dihormati dengan melihat cara berpakaiannya'],
+    answer:2,
+    hint:'"Panjang tidak boleh dipotong, pendek tidak boleh disambung" = jangan ubah alam, hidup sesuai kodrat = sederhana dan tidak serakah.'
+  },
+  {
+    id:39, points:2, type:'single',
+    text:'Nilai-nilai utama yang terkandung dalam filosofi "Alam Takambang Jadi Guru" dari suku Minangkabau adalah ....',
+    choices:['Ketaatan pada tradisi dan adat istiadat','Penghormatan terhadap leluhur','Individualisme dan persaingan','Kerja sama dan gotong royong'],
+    answer:3,
+    hint:'"Alam Takambang Jadi Guru" artinya alam semesta menjadi tempat belajar — belajar dari alam termasuk belajar tentang kebersamaan dan gotong royong.'
+  },
+  {
+    id:40, points:2, type:'multi',
+    text:'Berdasarkan artikel tentang pantun yang telah ditetapkan UNESCO sebagai Warisan Budaya Tak Benda pada tahun 2020, dua langkah yang paling tepat untuk melestarikan pantun ke generasi berikutnya melalui jalur pendidikan yaitu .... (pilih 2 jawaban yang benar)',
+    choices:['Mewajibkan seluruh instansi pemerintah untuk menggunakan pantun dalam setiap pidato kenegaraan tanpa terkecuali','Mengintegrasikan materi pembuatan pantun ke dalam kurikulum mata pelajaran Bahasa Indonesia di tingkat SD, SMP, dan SMA','Menyelenggarakan lomba "Berbalas Pantun" antar siswa secara rutin dalam kegiatan bulan bahasa atau pentas seni sekolah','Memberikan insentif berupa uang tunai kepada setiap pemuda yang berhasil mengunggah video berpantun di media sosial'],
+    answer:[1,2],
+    hint:'Jalur pendidikan = integrasi kurikulum dan kegiatan sekolah. Lomba berbalas pantun = kegiatan sekolah yang tepat.'
+  },
+  {
+    id:41, points:2, type:'tf',
+    text:'Gotong royong hanya menguntungkan pihak yang meminta bantuan saja, sehingga tidak memiliki nilai keadilan bagi warga lainnya.\n\nBenar atau Salah?',
+    choices:['Benar (True)','Salah (False)'],
+    answer:1,
+    hint:'Gotong royong menguntungkan semua pihak: yang dibantu mendapat manfaat langsung, yang membantu mendapat manfaat sosial dan nilai kebersamaan.'
+  },
+  {
+    id:42, points:2, type:'single',
+    text:'Santoso merupakan siswa yang baik dan aktif di dalam kegiatan sekolah. Santoso memiliki kepribadian yang suka menolong temannya dalam kesulitan belajar dan selalu bersyukur atas apa yang diberikan oleh orang tua maupun gurunya dan selalu berpikir baik dalam sebuah tindakan. Sikap Santoso ini merujuk pada karakter kerja sama dan gotong royong merupakan kehidupan olah ....',
+    choices:['Pikir','Hati','Raga','Rasa / Karsa'],
+    answer:1,
+    hint:'Menolong, bersyukur, berpikir baik = sikap yang bersumber dari hati/perasaan, bukan dari pikiran atau fisik.'
+  },
+  {
+    id:43, points:2, type:'tf',
+    text:'Menolak ikut serta dalam kegiatan kerja bakti lingkungan sekolah karena merasa sudah membayar uang SPP dan menganggap kebersihan adalah tugas penjaga sekolah.\n\nBenar atau Salah?',
+    choices:['Benar (True)','Salah (False)'],
+    answer:1,
+    hint:'Kerja bakti = gotong royong = kewajiban bersama. Membayar SPP tidak membebaskan dari tanggung jawab sosial bersama.'
+  },
+  {
+    id:44, points:2, type:'single',
+    text:'Peristiwa Sumpah Pemuda pada 28 Oktober 1928 merupakan momentum di mana para pemuda dari berbagai latar belakang suku (Jong Java, Jong Sumatranen Bond, Jong Celebes, dll) berikrar untuk bersatu. Hubungan yang paling tepat antara esensi Sumpah Pemuda dengan semboyan "Bhinneka Tunggal Ika" dalam kehidupan berbangsa adalah ....',
+    choices:['Sumpah Pemuda bertujuan untuk menghapuskan seluruh perbedaan adat dan bahasa daerah agar sesuai dengan prinsip Bhinneka Tunggal Ika','Sumpah Pemuda merupakan manifestasi nyata dari Bhinneka Tunggal Ika, di mana keberagaman suku dan agama bukan penghalang, melainkan modal utama untuk membentuk satu kesatuan bangsa','Bhinneka Tunggal Ika lahir sebagai bentuk protes para pemuda terhadap kebijakan kolonial yang terlalu membebaskan keragaman budaya di Indonesia','Sumpah Pemuda hanya menekankan pada aspek "Tunggal Ika" (kesatuan) saja, sementara aspek "Bhinneka" (keberagaman) baru muncul setelah Indonesia merdeka'],
+    answer:1,
+    hint:'Sumpah Pemuda = pemuda dari berbagai suku bersatu = perbedaan bukan penghalang = sesuai Bhinneka Tunggal Ika.'
+  },
+  {
+    id:45, points:2, type:'single',
+    text:'Isi Sumpah Pemuda yang pertama berbunyi: "Kami putra dan putri Indonesia, mengaku bertumpah darah yang satu, tanah Indonesia". Jika dikaitkan dengan nilai-nilai Pancasila, ikrar tersebut merupakan perwujudan nyata dari Sila ketiga, yaitu "Persatuan Indonesia", karena ....',
+    choices:['Menekankan pada pentingnya pengakuan kedaulatan wilayah demi kepentingan ekonomi semata','Mengakui identitas geografis yang sama sebagai fondasi untuk membangun rasa persatuan dan cinta tanah air di tengah keberagaman','Mengharuskan setiap warga negara untuk meninggalkan identitas daerahnya agar tercapai keseragaman budaya nasional','Mengutamakan kepatuhan rakyat kepada pemerintah pusat sebagai bentuk pengabdian terhadap tumpah darah'],
+    answer:1,
+    hint:'"Bertumpah darah yang satu" = mengakui satu tanah air = fondasi persatuan dan rasa cinta tanah air.'
+  },
+  {
+    id:46, points:2, type:'single',
+    text:'Persatuan dan kesatuan merupakan nilai luhur dalam Sumpah Pemuda. Nilai luhur Sumpah Pemuda dapat ditunjukkan dalam berkumpul bersama teman, seperti ....',
+    choices:['Mengadakan bakti sosial untuk meringankan korban bencana alam','Tidak memberikan contekan saat sumatif akhir tahun','Bergaul tanpa membedakan status sosial','Mempelajari budaya daerah lain'],
+    answer:2,
+    hint:'Bergaul tanpa membedakan status sosial = mewujudkan persatuan dan kesetaraan dalam kehidupan sehari-hari.'
+  },
+  {
+    id:47, points:2, type:'single',
+    text:'Pancasila sebagai dasar negara memiliki peran penting dalam komitmen menjaga keutuhan NKRI, salah satu komitmennya adalah ....',
+    choices:['Dengan membatasi kebebasan berpendapat dalam masyarakat','Dengan mengabaikan perbedaan budaya untuk menciptakan keseragaman','Dengan mempromosikan kebijakan yang menguntungkan kelompok tertentu','Dengan menanamkan nilai-nilai persatuan, toleransi, dan kesetaraan bagi seluruh rakyat Indonesia'],
+    answer:3,
+    hint:'Pancasila menjaga keutuhan NKRI melalui nilai-nilainya: persatuan (Sila 3), kemanusiaan (Sila 2), keadilan (Sila 5).'
+  },
+  {
+    id:48, points:2, type:'single',
+    text:'Era globalisasi membawa perubahan besar yang mampu melintasi batas-batas negara secara digital maupun fisik. Bagi Indonesia, fenomena ini tidak hanya menawarkan peluang, tetapi juga tantangan serius dalam mempertahankan keutuhan NKRI.\n\nPernyataan di bawah ini yang paling tepat menggambarkan tantangan NKRI di era globalisasi pada aspek sosial budaya, pendidikan, serta pertahanan dan keamanan yaitu ....',
+    choices:['Sosial Budaya: Meningkatnya semangat gotong royong; Pendidikan: Meluasnya penggunaan teknologi asing; Pertahanan: Stabilnya kondisi keamanan di wilayah perbatasan','Sosial Budaya: Masuknya gaya hidup individualis yang mengikis kearifan lokal; Pendidikan: Tantangan menanamkan karakter bangsa di tengah derasnya arus informasi digital; Pertahanan: Ancaman siber (cyber crime) yang mampu melumpuhkan infrastruktur vital negara','Sosial Budaya: Dominasi budaya lokal di kancah internasional; Pendidikan: Kurangnya literasi digital di kalangan pendidik; Pertahanan: Berkurangnya jumlah personel militer karena beralih ke sektor industri','Sosial Budaya: Munculnya rasa bangga berlebihan terhadap identitas kesukuan; Pendidikan: Biaya sekolah yang semakin mahal akibat globalisasi; Pertahanan: Konflik antarnegara yang hanya terjadi secara fisik di perbatasan darat'],
+    answer:1,
+    hint:'Globalisasi = ancaman individualis (sosial), tantangan karakter di era digital (pendidikan), ancaman siber (pertahanan).'
+  },
+  {
+    id:49, points:2, type:'single',
+    text:'Saat berdiskusi di ruang media sosial, sikap yang harus dijaga paling utama adalah ....',
+    choices:['Berpakaian dengan rapih dan mewah','Menyebarkan informasi yang akan didiskusikan terlebih dahulu','Menggunakan gawai yang sesuai dengan spesifikasi tinggi dan lancar','Menjaga etika pembicaraan yang baik dengan berkata-kata tidak menyinggung'],
+    answer:3,
+    hint:'Di ruang publik (termasuk medsos), etika komunikasi adalah yang paling utama — berbicara dengan sopan dan tidak menyinggung.'
+  },
+  {
+    id:50, points:2, type:'single',
+    text:'Menjaga keutuhan Negara Kesatuan Republik Indonesia (NKRI) bukan hanya tugas TNI dan POLRI, melainkan tanggung jawab seluruh warga negara sesuai dengan profesi dan kemampuannya masing-masing.\n\nDi bawah ini pasangan profesi dan bentuk peran aktif yang paling tepat dalam menjaga keutuhan NKRI adalah ....',
+    choices:['Seorang Siswa: Aktif mengikuti kegiatan organisasi internasional agar dapat mempromosikan budaya asing di lingkungan sekolah','Seorang Petani: Mengolah lahan pertanian dengan maksimal untuk menjaga ketahanan pangan nasional sebagai salah satu pilar stabilitas negara','Seorang Guru: Mengajarkan teknik bela diri militer kepada peserta didik agar siap dikirim ke medan perang sewaktu-waktu','Seorang Petugas Medis: Memberikan pelayanan kesehatan hanya kepada warga yang memiliki kesamaan suku agar kelompoknya tetap kuat'],
+    answer:1,
+    hint:'Ketahanan pangan = pilar ketahanan negara. Petani yang produktif berkontribusi nyata menjaga keutuhan NKRI.'
+  }
+];
+
+function shuffle(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+const LETTERS=['A','B','C','D'];
+let questions=[];
+let current=0;
+let answers={};
+let hintShown={};
+let animDir='right';
+
+function init(){
+  questions=shuffle(ALL_QUESTIONS);
+  current=0;
+  answers={};
+  hintShown={};
+  render();
+}
+
+function render(){
+  const app=document.getElementById('app');
+  const phase=app.dataset.phase||'start';
+  if(phase==='start'){renderStart(app);}
+  else if(phase==='quiz'){renderQuiz(app);}
+  else{renderSummary(app);}
+}
+
+function renderStart(app){
+  app.innerHTML=`
+  <div class="start-wrap">
+    <div class="deco-ring"><span class="deco-icon">📋</span></div>
+    <div class="start-badge">PPKn · TP 2025–2026</div>
+    <h1 class="start-title">Latihan PSAJ PPKn</h1>
+    <p class="start-sub">Uji pemahaman Pancasila, UUD, Norma &amp; Kebangsaan</p>
+    <div class="start-meta">
+      <div class="start-chip">📝 <span>50 Soal</span></div>
+      <div class="start-chip">⏱ <span>Tanpa batas waktu</span></div>
+      <div class="start-chip">🎯 <span>100 Poin</span></div>
+      <div class="start-chip">🔀 <span>Soal diacak</span></div>
+    </div>
+    <button class="btn-start" id="btnStart">Mulai Kuis ▶</button>
+  </div>
+  <div class="footer-copy">© Malvin 2026</div>`;
+  document.getElementById('btnStart').onclick=()=>{
+    app.dataset.phase='quiz';
+    init();
+  };
+}
+
+function renderQuiz(app){
+  const q=questions[current];
+  const totalQ=questions.length;
+  const pct=Math.round((current/totalQ)*100);
+  const userAns=answers[current];
+  const answered=userAns!==undefined;
+  const isLast=current===totalQ-1;
+  const isFirst=current===0;
+  const choiceLetters=LETTERS.slice(0,q.choices.length);
+
+  let choicesHTML='';
+  if(q.type==='tf'){
+    choicesHTML=`<div class="tf-choices">`;
+    q.choices.forEach((c,i)=>{
+      let cls='tf-btn';
+      if(answered){
+        cls+=' disabled';
+        if(Array.isArray(q.answer)?q.answer.includes(i):q.answer===i) cls+=' reveal-correct';
+        if(userAns===i&&!(Array.isArray(q.answer)?q.answer.includes(i):q.answer===i)) cls+=' wrong';
+        if(userAns===i&&(Array.isArray(q.answer)?q.answer.includes(i):q.answer===i)) cls+=' correct';
+      } else {
+        if(userAns===i) cls+=' selected';
+      }
+      const icon=answered?((Array.isArray(q.answer)?q.answer.includes(i):q.answer===i)?'✓':''):'';
+      choicesHTML+=`<button class="${cls}" data-idx="${i}" ${answered?'disabled':''}>${c} ${icon}</button>`;
+    });
+    choicesHTML+=`</div>`;
+  } else {
+    const isMulti=q.type==='multi';
+    if(isMulti) choicesHTML+=`<div class="multi-note">⚡ Pilih ${q.answer.length} jawaban yang benar</div>`;
+    choicesHTML+=`<div class="choices">`;
+    q.choices.forEach((c,i)=>{
+      let cls='choice';
+      const isCorrect=Array.isArray(q.answer)?q.answer.includes(i):q.answer===i;
+      if(answered){
+        cls+=' disabled';
+        if(isMulti){
+          const ua=Array.isArray(userAns)?userAns:[];
+          if(isCorrect) cls+=' reveal-correct';
+          if(ua.includes(i)&&!isCorrect) cls+=' wrong';
+          if(ua.includes(i)&&isCorrect) cls+=' correct';
+        } else {
+          if(isCorrect) cls+=' reveal-correct';
+          if(userAns===i&&!isCorrect) cls+=' wrong';
+          if(userAns===i&&isCorrect) cls+=' correct';
+        }
+      } else {
+        if(isMulti){const ua=Array.isArray(userAns)?userAns:[];if(ua.includes(i))cls+=' selected';}
+        else{if(userAns===i)cls+=' selected';}
+      }
+      const icon=answered?(isCorrect?'✓':(isMulti?(Array.isArray(userAns)&&userAns.includes(i)&&!isCorrect?'✗':''):(userAns===i&&!isCorrect?'✗':''))):'';
+      choicesHTML+=`<div class="${cls}" data-idx="${i}" role="button" tabindex="${answered?-1:0}">
+        <div class="choice-letter">${choiceLetters[i]}</div>
+        <div class="choice-text">${c}</div>
+        <div class="choice-icon">${icon}</div>
+      </div>`;
+    });
+    choicesHTML+=`</div>`;
+  }
+
+  let feedbackHTML='';
+  if(answered){
+    const isCorrect=checkCorrect(q,userAns);
+    feedbackHTML=`<div class="feedback ${isCorrect?'correct':'wrong'}">${isCorrect?'✓ Jawaban benar! +'+q.points+' poin':'✗ Jawaban kurang tepat. Pelajari kembali materi ini.'}</div>`;
+  }
+
+  const hintVisible=hintShown[current];
+  const qTextFormatted=q.text.replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');
+
+  app.innerHTML=`
+  <div class="screen" id="quizScreen">
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span class="q-count">Soal ${current+1} dari ${totalQ}</span>
+        <span class="q-points">${q.points} poin</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="q-card">
+      <div>
+        <span class="q-num-badge">No. ${current+1}</span>
+        <span class="q-type-tag">${q.type==='tf'?'Benar/Salah':q.type==='multi'?'Pilihan Ganda – Multi':'Pilihan Ganda'}</span>
+      </div>
+      <p class="q-text" style="margin-top:0.8rem">${qTextFormatted}</p>
+    </div>
+    ${choicesHTML}
+    ${feedbackHTML}
+    <div class="hint-wrap">
+      <button class="btn-hint" id="btnHint">💡 ${hintVisible?'Sembunyikan Hint':'Tampilkan Hint'}</button>
+      <div class="hint-box ${hintVisible?'visible':''}" id="hintBox">${q.hint}</div>
+    </div>
+    <div class="nav-row">
+      <button class="btn-nav" id="btnPrev" ${isFirst?'disabled':''}>← Sebelumnya</button>
+      <button class="btn-nav ${isLast?'finish':'primary'}" id="btnNext" ${!answered&&!isLast?'disabled':answered||isLast?'':''} ${isLast&&answered?'':''}>${isLast?'📊 Koreksi':'Berikutnya →'}</button>
+    </div>
+  </div>
+  <div class="footer-copy">© Malvin 2026</div>`;
+
+  const nextBtn=document.getElementById('btnNext');
+  if(!answered&&!isLast) nextBtn.disabled=true;
+  if(isLast&&!answered) nextBtn.disabled=true;
+
+  document.getElementById('btnHint').onclick=()=>{
+    hintShown[current]=!hintShown[current];
+    renderQuiz(app);
+  };
+  document.getElementById('btnPrev').onclick=()=>{
+    if(current>0){animDir='left';current--;renderQuiz(app);}
+  };
+  document.getElementById('btnNext').onclick=()=>{
+    if(isLast){app.dataset.phase='summary';renderSummary(app);}
+    else{animDir='right';current++;renderQuiz(app);}
+  };
+
+  if(!answered){
+    if(q.type==='single'){
+      document.querySelectorAll('.choice').forEach(el=>{
+        el.onclick=()=>{
+          const idx=parseInt(el.dataset.idx);
+          answers[current]=idx;
+          renderQuiz(app);
+        };
+      });
+    } else if(q.type==='multi'){
+      document.querySelectorAll('.choice').forEach(el=>{
+        el.onclick=()=>{
+          const idx=parseInt(el.dataset.idx);
+          if(!answers[current]) answers[current]=[];
+          const ua=answers[current];
+          const pos=ua.indexOf(idx);
+          if(pos===-1){ua.push(idx);}else{ua.splice(pos,1);}
+          if(ua.length===q.answer.length){renderQuiz(app);}
+          else{
+            el.classList.toggle('selected');
+            document.getElementById('btnNext').disabled=ua.length!==q.answer.length;
+          }
+        };
+      });
+    } else if(q.type==='tf'){
+      document.querySelectorAll('.tf-btn').forEach(el=>{
+        el.onclick=()=>{
+          const idx=parseInt(el.dataset.idx);
+          answers[current]=idx;
+          renderQuiz(app);
+        };
+      });
+    }
+  }
+
+  const scr=document.getElementById('quizScreen');
+  const dir=animDir==='right'?'slideRight':'slideLeft';
+  scr.style.animation=`${dir} 0.3s ease both`;
+}
+
+function checkCorrect(q,ua){
+  if(q.type==='multi'){
+    const a=Array.isArray(ua)?[...ua].sort():[[]];
+    const b=[...q.answer].sort();
+    return JSON.stringify(a)===JSON.stringify(b);
+  }
+  return ua===q.answer;
+}
+
+function renderSummary(app){
+  let correct=0,wrong=0,totalPts=0,maxPts=0;
+  const results=questions.map((q,i)=>{
+    maxPts+=q.points;
+    const ua=answers[i];
+    const ok=ua!==undefined&&checkCorrect(q,ua);
+    if(ok){correct++;totalPts+=q.points;}else{wrong++;}
+    return{q,ua,ok,i};
+  });
+  const pct=Math.round((totalPts/maxPts)*100);
+  const circ=2*Math.PI*54;
+  const dash=circ-(pct/100)*circ;
+  let grade='',msg='',gradeColor='';
+  if(pct>=90){grade='A';msg='Luar biasa! Kamu siap menghadapi PSAJ.';gradeColor='var(--success)';}
+  else if(pct>=80){grade='B';msg='Sangat bagus! Sedikit lagi sempurna.';gradeColor='var(--accent)';}
+  else if(pct>=70){grade='C';msg='Cukup baik. Terus berlatih, kamu bisa!';gradeColor='var(--warn)';}
+  else if(pct>=60){grade='D';msg='Perlu lebih banyak latihan. Jangan menyerah!';gradeColor='var(--warn)';}
+  else{grade='E';msg='Yuk belajar lebih giat lagi! Kamu pasti bisa.';gradeColor='var(--danger)';}
+
+  const wrongItems=results.filter(r=>!r.ok);
+  const correctItems=results.filter(r=>r.ok);
+
+  let reviewHTML='';
+  if(wrongItems.length>0){
+    reviewHTML+=`<div class="section-title">❌ Soal yang perlu dipelajari ulang (${wrongItems.length})</div><div class="review-list">`;
+    wrongItems.forEach(r=>{
+      const shortQ=r.q.text.replace(/<[^>]+>/g,'').substring(0,80)+'...';
+      const correctLabel=Array.isArray(r.q.answer)?r.q.answer.map(a=>LETTERS[a]).join('&'):LETTERS[r.q.answer];
+      reviewHTML+=`<div class="review-item wrong-item">
+        <div class="review-dot w">✗</div>
+        <div class="review-q"><strong>Soal No. ${r.i+1}</strong>${shortQ}<br><span style="color:var(--success);font-size:11px">Jawaban benar: ${correctLabel}</span></div>
+      </div>`;
+    });
+    reviewHTML+=`</div>`;
+  }
+
+  app.innerHTML=`
+  <div class="screen" id="summaryScreen">
+    <div class="summary-hero">
+      <div class="score-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="54"/>
+          <circle class="fill" cx="60" cy="60" r="54" stroke-dasharray="${circ}" stroke-dashoffset="${dash}" id="progressCircle"/>
+        </svg>
+        <div class="score-center">
+          <span class="score-val" id="scoreAnim">0</span>
+          <span class="score-max">/ ${maxPts}</span>
+        </div>
+      </div>
+      <div class="summary-grade" style="color:${gradeColor}">Nilai ${grade} · ${pct}%</div>
+      <div class="summary-msg">${msg}</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-val green">${correct}</div><div class="stat-label">Benar</div></div>
+        <div class="stat-card"><div class="stat-val red">${wrong}</div><div class="stat-label">Salah</div></div>
+        <div class="stat-card"><div class="stat-val blue">${totalPts}</div><div class="stat-label">Poin</div></div>
+      </div>
+    </div>
+    ${reviewHTML}
+    <button class="btn-retry" onclick="retryQuiz()">🔄 Coba Lagi</button>
+  </div>
+  <div class="footer-copy">© Malvin 2026</div>`;
+
+  let sv=0;
+  const target=totalPts;
+  const dur=1200;
+  const step=16;
+  const inc=target/(dur/step);
+  const iv=setInterval(()=>{
+    sv=Math.min(sv+inc,target);
+    const el=document.getElementById('scoreAnim');
+    if(el) el.textContent=Math.round(sv);
+    if(sv>=target) clearInterval(iv);
+  },step);
+
+  const scr=document.getElementById('summaryScreen');
+  scr.style.animation='popIn 0.45s ease both';
+}
+
+window.retryQuiz=function(){
+  const app=document.getElementById('app');
+  app.dataset.phase='quiz';
+  init();
+};
+
+const app=document.getElementById('app');
+app.dataset.phase='start';
+renderStart(app);
+</script>
+</body>
+</html>

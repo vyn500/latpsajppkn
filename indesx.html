@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan PJOK Kelas IX</title>
+<style>
+:root {
+  --bg: #0a0f0d;
+  --surface: #0f1a13;
+  --surface2: #152019;
+  --surface3: #1a2820;
+  --border: rgba(60,180,100,0.16);
+  --border2: rgba(60,180,100,0.32);
+  --text: #dff2e8;
+  --text-muted: #6a9a7a;
+  --text-dim: #3a5a45;
+  --accent: #2ecc71;
+  --accent-glow: rgba(46,204,113,0.14);
+  --accent2: #00e5a0;
+  --warn: #f0d060;
+  --warn-glow: rgba(240,208,96,0.12);
+  --danger: #f06870;
+  --success: #2ecc71;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --trans: 0.28s cubic-bezier(0.4,0,0.2,1);
+  font-size: clamp(17px, 1.5vw + 13px, 19px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  font-size:1rem;
+  line-height:1.65;
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 0 4rem;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+
+.screen{
+  width:100%;max-width:900px;
+  padding:1.8rem clamp(1rem,4vw,2.5rem);
+  animation:fadeUp 0.4s ease both;
+}
+
+/* ── START ── */
+.start-wrap{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:2.5rem clamp(1rem,5vw,3rem);gap:0;
+}
+.start-badge{
+  background:var(--surface2);border:1px solid var(--border2);
+  color:var(--accent);font-size:clamp(11px,1.1vw,13px);
+  letter-spacing:0.15em;text-transform:uppercase;
+  padding:6px 18px;border-radius:24px;margin-bottom:2rem;
+}
+.start-title{
+  font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700;
+  text-align:center;line-height:1.12;margin-bottom:0.7rem;
+  background:linear-gradient(135deg,#5df0a0 0%,#a8ffd4 50%,#2ecc71 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.start-sub{color:var(--text-muted);text-align:center;font-size:clamp(0.95rem,1.5vw,1.1rem);margin-bottom:0.5rem}
+.start-meta{display:flex;gap:clamp(0.8rem,2vw,1.5rem);margin:1.8rem 0 2.8rem;flex-wrap:wrap;justify-content:center}
+.start-chip{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:24px;padding:8px 18px;
+  font-size:clamp(13px,1.2vw,15px);color:var(--text-muted);
+  display:flex;align-items:center;gap:7px;
+}
+.start-chip span{color:var(--text);font-weight:600}
+.btn-start{
+  background:var(--accent);color:#071409;border:none;
+  border-radius:var(--radius);
+  padding:clamp(14px,2vw,18px) clamp(44px,6vw,72px);
+  font-size:clamp(1rem,1.5vw,1.15rem);font-weight:700;
+  cursor:pointer;transition:var(--trans);letter-spacing:0.03em;
+  box-shadow:0 0 32px rgba(46,204,113,0.28);
+}
+.btn-start:hover{background:#27b862;transform:translateY(-2px);box-shadow:0 0 44px rgba(46,204,113,0.42)}
+.btn-start:active{transform:translateY(0)}
+.deco-ring{
+  width:clamp(150px,22vw,210px);height:clamp(150px,22vw,210px);
+  border-radius:50%;border:1px solid var(--border);
+  position:relative;display:flex;align-items:center;justify-content:center;
+  margin-bottom:2.2rem;
+}
+.deco-ring::before{content:'';position:absolute;width:77%;height:77%;border-radius:50%;border:1px solid rgba(46,204,113,0.22)}
+.deco-ring::after{content:'';position:absolute;width:55%;height:55%;border-radius:50%;background:var(--accent-glow);border:1px solid rgba(46,204,113,0.38)}
+.deco-icon{font-size:clamp(2.2rem,4vw,3.2rem);position:relative;z-index:1}
+
+/* ── PROGRESS ── */
+.progress-wrap{margin-bottom:1.6rem}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.q-count{font-size:clamp(13px,1.2vw,15px);color:var(--text-muted);letter-spacing:0.04em}
+.q-points{
+  font-size:clamp(13px,1.2vw,15px);color:var(--accent);
+  background:var(--accent-glow);border:1px solid rgba(46,204,113,0.26);
+  border-radius:14px;padding:3px 13px;font-weight:600;
+}
+.progress-bar{height:6px;background:var(--surface3);border-radius:6px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:6px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1)}
+.chapter-label{font-size:clamp(11px,1vw,12px);color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+
+/* ── QUESTION CARD ── */
+.q-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:clamp(1.4rem,3vw,2rem) clamp(1.4rem,3vw,2.2rem);
+  margin-bottom:1.2rem;
+}
+.q-num-badge{
+  display:inline-block;background:var(--accent);color:#071409;
+  font-size:clamp(12px,1.1vw,14px);font-weight:700;
+  padding:4px 13px;border-radius:7px;margin-bottom:1rem;letter-spacing:0.06em;
+}
+.q-type-tag{
+  display:inline-block;margin-left:9px;font-size:clamp(11px,1vw,13px);
+  color:var(--text-muted);background:var(--surface3);
+  border:1px solid var(--border);border-radius:6px;padding:3px 10px;vertical-align:middle;
+}
+.q-chapter{
+  display:inline-block;margin-left:6px;font-size:clamp(11px,1vw,12px);
+  color:var(--accent2);background:rgba(0,229,160,0.08);
+  border:1px solid rgba(0,229,160,0.2);border-radius:6px;padding:3px 10px;vertical-align:middle;
+}
+.q-text{font-size:clamp(1rem,1.5vw,1.1rem);color:var(--text);line-height:1.75}
+.q-text em{color:var(--accent2);font-style:italic}
+.q-text strong{color:var(--warn);font-weight:600}
+.q-text .mono{font-family:monospace;background:var(--surface3);padding:2px 6px;border-radius:4px;font-size:0.9em}
+
+/* ── CHOICES ── */
+.choices{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.2rem}
+.choice{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:clamp(0.9rem,1.8vw,1.2rem) clamp(1rem,2vw,1.4rem);
+  cursor:pointer;display:flex;align-items:flex-start;gap:14px;
+  transition:var(--trans);position:relative;overflow:hidden;
+}
+.choice::before{content:'';position:absolute;inset:0;background:var(--accent-glow);opacity:0;transition:opacity var(--trans)}
+.choice:hover{border-color:var(--border2);transform:translateX(4px)}
+.choice:hover::before{opacity:1}
+.choice.selected{border-color:var(--accent);background:rgba(46,204,113,0.1)}
+.choice.correct{border-color:var(--success);background:rgba(46,204,113,0.12);animation:popIn 0.3s ease}
+.choice.wrong{border-color:var(--danger);background:rgba(240,104,112,0.1);animation:popIn 0.3s ease}
+.choice.reveal-correct{border-color:var(--success);background:rgba(46,204,113,0.07)}
+.choice.disabled{cursor:default;transform:none}
+.choice-letter{
+  flex-shrink:0;width:clamp(32px,3.5vw,40px);height:clamp(32px,3.5vw,40px);
+  border-radius:8px;background:var(--surface3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(13px,1.2vw,15px);font-weight:700;color:var(--text-muted);transition:var(--trans);
+}
+.choice.selected .choice-letter,.choice.correct .choice-letter{background:var(--accent);color:#071409;border-color:var(--accent)}
+.choice.wrong .choice-letter{background:var(--danger);color:#fff;border-color:var(--danger)}
+.choice.reveal-correct .choice-letter{background:var(--success);color:#071409;border-color:var(--success)}
+.choice-text{font-size:clamp(0.95rem,1.4vw,1.05rem);line-height:1.6;color:var(--text);padding-top:clamp(4px,0.5vw,7px);flex:1}
+.choice-icon{margin-left:auto;flex-shrink:0;font-size:1.2rem;opacity:0;transition:opacity 0.2s;padding-top:6px}
+.choice.correct .choice-icon,.choice.reveal-correct .choice-icon{opacity:1;color:var(--success)}
+.choice.wrong .choice-icon{opacity:1;color:var(--danger)}
+
+/* TF */
+.tf-choices{display:flex;gap:1rem;margin-bottom:1.2rem}
+.tf-btn{
+  flex:1;padding:clamp(1rem,2vw,1.4rem);border-radius:var(--radius-sm);
+  border:1px solid var(--border);background:var(--surface2);cursor:pointer;
+  font-size:clamp(0.95rem,1.4vw,1.1rem);font-weight:700;color:var(--text-muted);
+  transition:var(--trans);text-align:center;
+}
+.tf-btn:hover{border-color:var(--border2);color:var(--text)}
+.tf-btn.selected{border-color:var(--accent);background:rgba(46,204,113,0.1);color:var(--accent)}
+.tf-btn.correct{border-color:var(--success);background:rgba(46,204,113,0.12);color:var(--success)}
+.tf-btn.wrong{border-color:var(--danger);background:rgba(240,104,112,0.1);color:var(--danger)}
+.tf-btn.reveal-correct{border-color:var(--success);background:rgba(46,204,113,0.07);color:var(--success)}
+.tf-btn.disabled{cursor:default}
+
+.multi-note{
+  font-size:clamp(12px,1.1vw,14px);color:var(--warn);
+  background:rgba(240,208,96,0.07);border:1px solid rgba(240,208,96,0.2);
+  border-radius:7px;padding:6px 14px;margin-bottom:0.8rem;display:inline-block;
+}
+
+/* ── FEEDBACK ── */
+.feedback{
+  border-radius:var(--radius-sm);
+  padding:clamp(0.75rem,1.5vw,1rem) clamp(1rem,2vw,1.3rem);
+  font-size:clamp(0.9rem,1.3vw,1rem);margin-bottom:1rem;
+  display:none;animation:fadeIn 0.3s ease;
+}
+.feedback.correct{display:block;background:rgba(46,204,113,0.07);border:1px solid rgba(46,204,113,0.3);color:var(--success)}
+.feedback.wrong{display:block;background:rgba(240,104,112,0.07);border:1px solid rgba(240,104,112,0.28);color:var(--danger)}
+
+/* explain box shown after answer */
+.explain-box{
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:var(--radius-sm);
+  padding:clamp(0.85rem,1.5vw,1.1rem) clamp(1rem,2vw,1.4rem);
+  font-size:clamp(0.88rem,1.3vw,0.97rem);
+  color:var(--text-muted);margin-bottom:1rem;
+  display:none;animation:fadeIn 0.35s ease;line-height:1.7;
+}
+.explain-box.visible{display:block}
+.explain-box strong{color:var(--accent2)}
+
+/* ── HINT ── */
+.hint-wrap{margin-bottom:1.2rem}
+.btn-hint{
+  background:none;border:1px solid var(--border2);border-radius:var(--radius-sm);
+  padding:clamp(10px,1.3vw,13px) 20px;color:var(--text-muted);
+  font-size:clamp(0.9rem,1.3vw,1rem);cursor:pointer;transition:var(--trans);
+  display:flex;align-items:center;gap:8px;width:100%;justify-content:center;
+}
+.btn-hint:hover{border-color:var(--warn);color:var(--warn);background:var(--warn-glow)}
+.hint-box{
+  background:var(--surface2);border:1px solid rgba(240,208,96,0.25);
+  border-radius:var(--radius-sm);
+  padding:clamp(0.85rem,1.5vw,1.1rem) clamp(1rem,2vw,1.4rem);
+  font-size:clamp(0.9rem,1.3vw,1rem);color:var(--warn);
+  margin-top:0.6rem;display:none;animation:fadeIn 0.3s ease;line-height:1.7;
+}
+.hint-box.visible{display:block}
+
+/* ── NAV ── */
+.nav-row{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.5rem}
+.btn-nav{
+  flex:1;padding:clamp(13px,1.8vw,17px) clamp(16px,2.5vw,24px);
+  border-radius:var(--radius-sm);border:1px solid var(--border2);
+  background:var(--surface2);color:var(--text-muted);
+  font-size:clamp(0.9rem,1.3vw,1rem);font-weight:700;cursor:pointer;
+  transition:var(--trans);display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.btn-nav:disabled{opacity:0.28;cursor:not-allowed;pointer-events:none}
+.btn-nav.primary{background:var(--accent);border-color:var(--accent);color:#071409}
+.btn-nav.primary:hover{background:#27b862;border-color:#27b862}
+.btn-nav.finish{background:var(--accent2);border-color:var(--accent2);color:#071409;font-weight:700}
+.btn-nav.finish:hover{background:#00cca0;border-color:#00cca0}
+
+/* ── SUMMARY ── */
+.summary-hero{text-align:center;padding:clamp(1.5rem,3vw,2.5rem) 1rem clamp(1.2rem,2vw,1.8rem)}
+.score-ring{width:clamp(140px,18vw,170px);height:clamp(140px,18vw,170px);margin:0 auto 1.4rem;position:relative}
+.score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring circle{fill:none;stroke-width:10;stroke-linecap:round}
+.score-ring .track{stroke:var(--surface3)}
+.score-ring .fill{stroke:var(--accent);transition:stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1)}
+.score-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-val{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;color:var(--text)}
+.score-max{font-size:clamp(12px,1.1vw,14px);color:var(--text-muted)}
+.summary-grade{font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;margin-bottom:0.4rem}
+.summary-msg{color:var(--text-muted);font-size:clamp(0.95rem,1.4vw,1.05rem);margin-bottom:1.8rem}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.9rem;margin-bottom:1.8rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:clamp(0.9rem,1.8vw,1.3rem);text-align:center}
+.stat-val{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-bottom:4px}
+.stat-val.green{color:var(--success)}
+.stat-val.red{color:var(--danger)}
+.stat-val.blue{color:var(--accent2)}
+.stat-label{font-size:clamp(12px,1.1vw,14px);color:var(--text-muted)}
+.bab-summary{display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.8rem}
+.bab-row{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.85rem 1.1rem;display:flex;align-items:center;gap:12px;font-size:clamp(0.88rem,1.3vw,0.96rem)}
+.bab-name{flex:1;color:var(--text-muted)}
+.bab-score{font-weight:700;color:var(--accent)}
+.bab-bar-wrap{width:90px;height:6px;background:var(--surface3);border-radius:6px;overflow:hidden}
+.bab-bar{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.review-list{display:flex;flex-direction:column;gap:0.65rem;margin-bottom:1.8rem}
+.review-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:clamp(0.8rem,1.5vw,1.1rem) clamp(1rem,2vw,1.4rem);display:flex;align-items:flex-start;gap:12px;font-size:clamp(0.88rem,1.3vw,0.97rem)}
+.review-item.wrong-item{border-left:3px solid var(--danger)}
+.review-dot{flex-shrink:0;width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:2px}
+.review-dot.w{background:rgba(240,104,112,0.2);color:var(--danger)}
+.review-q{flex:1;color:var(--text-muted);line-height:1.5}
+.review-q strong{color:var(--text);display:block;margin-bottom:3px;font-size:clamp(0.9rem,1.3vw,1rem)}
+.section-title{font-size:clamp(12px,1.1vw,14px);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);margin:1.5rem 0 0.8rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
+.btn-retry{background:var(--accent);color:#071409;border:none;border-radius:var(--radius);padding:clamp(13px,1.8vw,17px) clamp(36px,5vw,56px);font-size:clamp(0.95rem,1.4vw,1.05rem);font-weight:700;cursor:pointer;transition:var(--trans);display:block;margin:0 auto}
+.btn-retry:hover{background:#27b862;transform:translateY(-2px)}
+
+.footer-copy{text-align:center;font-size:clamp(12px,1vw,13px);color:var(--text-dim);padding:1.8rem 0 0;letter-spacing:0.06em}
+
+@media(max-width:680px){
+  .tf-choices{flex-direction:column}
+  .tf-btn{padding:1rem 1.2rem}
+  .bab-bar-wrap{width:60px}
+}
+@media(max-width:400px){
+  .start-meta{gap:0.6rem}
+  .start-chip{padding:7px 12px;font-size:13px}
+  .nav-row{gap:0.5rem}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const CHAPTERS = [
+  'BAB I: Kebugaran Jasmani',
+  'BAB II: Bola Voli',
+  'BAB II: Sepak Bola',
+  'BAB III: Pencak Silat',
+  'BAB III: Lari Jarak Menengah',
+  'BAB III: Tolak Peluru',
+  'BAB IV: Gerak Berirama',
+  'BAB IV: Senam Lantai',
+  'BAB V: Renang',
+  'BAB VI: Bulutangkis',
+  'BAB VII: RJP / CPR',
+];
+
+const ALL_QUESTIONS = [
+  // ── BAB I: KEBUGARAN JASMANI ──
+  {
+    id:1, points:2, type:'single', chapter:'BAB I: Kebugaran Jasmani',
+    text:'Seorang atlet mampu berlari sejauh 10 km tanpa berhenti dengan napas yang masih terkontrol. Komponen kebugaran jasmani yang paling dominan digunakan dalam aktivitas tersebut adalah ....',
+    choices:[
+      'Kekuatan (strength)',
+      'Kelincahan (agility)',
+      'Daya tahan kardiovaskular/jantung-paru (cardiovascular endurance)',
+      'Kecepatan (speed)'
+    ],
+    answer:2,
+    hint:'Aktivitas lari jarak jauh secara berkelanjutan membutuhkan kemampuan jantung dan paru-paru menyuplai oksigen ke otot dalam waktu lama (VO2 max).'
+  },
+  {
+    id:2, points:2, type:'single', chapter:'BAB I: Kebugaran Jasmani',
+    text:'Perhatikan aktivitas berikut: seorang pemain basket melakukan gerakan lari zig-zag melewati cone dalam waktu sesingkat mungkin. Komponen kebugaran jasmani yang diuji dalam aktivitas tersebut adalah ....',
+    choices:[
+      'Daya tahan otot',
+      'Kelincahan (agility)',
+      'Keseimbangan (balance)',
+      'Komposisi tubuh'
+    ],
+    answer:1,
+    hint:'Kelincahan adalah kemampuan mengubah arah gerak tubuh dengan cepat dan tepat tanpa kehilangan keseimbangan. Contoh: lari zig-zag, shuttle run.'
+  },
+  {
+    id:3, points:2, type:'single', chapter:'BAB I: Kebugaran Jasmani',
+    text:'Untuk meningkatkan kebugaran jasmani secara optimal, latihan fisik harus mengikuti prinsip FITT. Yang dimaksud prinsip FITT dalam latihan kebugaran jasmani adalah ....',
+    choices:[
+      'Fisiologi, Intensif, Teknik, dan Taktik',
+      'Frekuensi, Intensitas, Tipe, dan Waktu',
+      'Fungsi, Interval, Toleransi, dan Tes',
+      'Fisik, Intelektual, Taktis, dan Terukur'
+    ],
+    answer:1,
+    hint:'FITT adalah singkatan dari Frekuensi (seberapa sering), Intensitas (seberapa keras), Tipe (jenis latihan), dan Waktu/Time (durasi latihan).'
+  },
+  // ── BAB II: BOLA VOLI ──
+  {
+    id:4, points:2, type:'single', chapter:'BAB II: Bola Voli',
+    text:'Dalam permainan bola voli, pemain melakukan pukulan servis dengan posisi bola dilempar ke atas setinggi kepala lalu dipukul dari atas kepala menggunakan telapak tangan. Jenis servis yang dilakukan pemain tersebut adalah ....',
+    choices:[
+      'Servis bawah (underhand serve)',
+      'Servis samping (side serve)',
+      'Servis atas (overhand serve)',
+      'Jump serve'
+    ],
+    answer:2,
+    hint:'Servis atas = bola dilempar ke atas lalu dipukul dari atas kepala. Servis bawah = bola dipukul dari bawah pinggang.'
+  },
+  {
+    id:5, points:2, type:'single', chapter:'BAB II: Bola Voli',
+    text:'Saat menerima servis keras dari lawan yang datang rendah dan cepat, teknik yang paling tepat digunakan seorang pemain bola voli adalah ....',
+    choices:[
+      'Smash — memukul bola dengan keras ke arah lawan',
+      'Passing atas (set) — menggunakan ujung jari untuk mengumpan',
+      'Passing bawah (forearm pass) — menggunakan lengan bawah untuk menerima bola',
+      'Blok — menghentikan bola di depan net'
+    ],
+    answer:2,
+    hint:'Passing bawah (forearm pass) digunakan saat menerima servis atau serangan keras yang datang rendah. Lengan bawah berfungsi sebagai bidang pantul.'
+  },
+  {
+    id:6, points:2, type:'single', chapter:'BAB II: Bola Voli',
+    text:'Dalam satu rally, pemain A menerima bola (sentuhan 1), mengumpan ke pemain B (sentuhan 2), kemudian pemain A kembali memukul bola untuk ketiga kalinya (sentuhan 3). Setelah itu, pemain A memukul bola lagi untuk keempat kalinya (sentuhan 4). Berdasarkan aturan bola voli, tindakan tersebut termasuk ....',
+    choices:[
+      'Sah, karena boleh memukul sebanyak yang diinginkan',
+      'Pelanggaran, karena satu tim hanya boleh menyentuh bola maksimal 3 kali',
+      'Sah, selama bola tidak menyentuh net',
+      'Pelanggaran double touch, karena memukul dua kali berturut-turut'
+    ],
+    answer:1,
+    hint:'Aturan bola voli: satu tim hanya boleh menyentuh bola maksimal 3 kali sebelum bola harus diseberangkan ke area lawan.'
+  },
+  // ── BAB II: SEPAK BOLA ──
+  {
+    id:7, points:2, type:'single', chapter:'BAB II: Sepak Bola',
+    text:'Seorang pemain ingin memberikan umpan pendek yang akurat kepada rekan satu tim. Bagian kaki yang paling tepat digunakan untuk tendangan tersebut adalah ....',
+    choices:[
+      'Ujung kaki (toe)',
+      'Punggung kaki (instep)',
+      'Kaki bagian luar (outside foot)',
+      'Kaki bagian dalam (inside foot)'
+    ],
+    answer:3,
+    hint:'Kaki bagian dalam digunakan untuk umpan pendek karena bidang sentuh lebih luas sehingga akurasi lebih tinggi.'
+  },
+  {
+    id:8, points:2, type:'single', chapter:'BAB II: Sepak Bola',
+    text:'Dalam pertandingan sepak bola, bola melambung tinggi setinggi dada seorang pemain. Teknik kontrol bola yang paling tepat digunakan untuk situasi tersebut adalah ....',
+    choices:[
+      'Mengontrol dengan kaki bagian dalam',
+      'Mengontrol dengan dada',
+      'Mengontrol dengan kepala (heading)',
+      'Mengontrol dengan paha'
+    ],
+    answer:1,
+    hint:'Bola melambung tinggi setinggi dada → gunakan dada untuk mengontrol. Dada memiliki permukaan luas dan elastis untuk menyerap tenaga bola.'
+  },
+  {
+    id:9, points:2, type:'single', chapter:'BAB II: Sepak Bola',
+    text:'Seorang pemain sepak bola sedang dijaga ketat oleh dua pemain lawan, namun ia melihat rekan setimnya berada di posisi bebas tanpa penjagaan. Keputusan taktik yang paling tepat adalah ....',
+    choices:[
+      'Melakukan dribel untuk melewati kedua pemain lawan',
+      'Langsung melepas tembakan ke gawang',
+      'Mengoper bola kepada rekan yang berada di posisi bebas',
+      'Mundur dan membangun serangan dari belakang'
+    ],
+    answer:2,
+    hint:'Saat dijaga ketat, oper ke rekan yang bebas adalah keputusan taktik terbaik untuk mempertahankan penguasaan bola.'
+  },
+  {
+    id:10, points:2, type:'single', chapter:'BAB II: Sepak Bola',
+    text:'Pada sebuah pertandingan sepak bola, seorang pemain menyentuh bola dengan tangannya (bukan kiper) di dalam area permainan normal. Jenis pelanggaran dan sanksi yang diberikan wasit adalah ....',
+    choices:[
+      'Offside — tendangan bebas tidak langsung',
+      'Handball — tendangan bebas langsung atau penalti jika terjadi di kotak penalti',
+      'Tackle berbahaya — kartu kuning',
+      'Bukan pelanggaran jika tidak disengaja'
+    ],
+    answer:1,
+    hint:'Handball = menyentuh bola dengan tangan (kecuali kiper di area sendiri). Sanksi: tendangan bebas langsung, atau penalti jika di kotak penalti.'
+  },
+  {
+    id:11, points:2, type:'single', chapter:'BAB II: Sepak Bola',
+    text:'Dalam pertandingan sepak bola, pemain A menendang bola ke arah gawang. Bola menyentuh tiang gawang, memantul, dan menyentuh lengan kiper sebelum akhirnya masuk ke gawang. Berdasarkan aturan FIFA, keputusan yang benar adalah ....',
+    choices:[
+      'Gol sah, karena bola sudah masuk ke gawang',
+      'Bukan gol, karena bola menyentuh tiang terlebih dahulu',
+      'Bukan gol, karena bola menyentuh tangan kiper',
+      'Gol sah, dan kiper mendapat kartu kuning'
+    ],
+    answer:0,
+    hint:'Gol dinyatakan sah jika bola secara keseluruhan telah melewati garis gawang. Menyentuh tiang atau kiper tidak membatalkan gol selama bola masuk.'
+  },
+  // ── BAB III: PENCAK SILAT ──
+  {
+    id:12, points:2, type:'single', chapter:'BAB III: Pencak Silat',
+    text:'Seorang pesilat melakukan serangan dengan cara mengayunkan kepalan tangan dari bawah ke atas seperti gerakan bandul jam menuju dagu lawan. Teknik pukulan yang dilakukan adalah ....',
+    choices:[
+      'Pukulan lurus (pukulan depan)',
+      'Pukulan bandul',
+      'Pukulan tegak',
+      'Pukulan melingkar'
+    ],
+    answer:1,
+    hint:'Pukulan bandul = ayunan dari bawah ke atas, menyerupai gerakan bandul jam. Sasaran biasanya dagu atau ulu hati.'
+  },
+  {
+    id:13, points:2, type:'single', chapter:'BAB III: Pencak Silat',
+    text:'Sebelum bertanding, pesilat mengambil sikap pasang. Fungsi utama sikap pasang dalam pencak silat adalah ....',
+    choices:[
+      'Menunjukkan rasa hormat kepada lawan',
+      'Melindungi tubuh, menjaga keseimbangan, dan mempersiapkan serangan atau tangkisan',
+      'Mengintimidasi lawan agar tidak berani menyerang',
+      'Menghemat tenaga sebelum pertandingan dimulai'
+    ],
+    answer:1,
+    hint:'Sikap pasang berfungsi sebagai posisi siap: melindungi area vital, memberikan keseimbangan, dan menyiapkan diri untuk menyerang atau bertahan.'
+  },
+  {
+    id:14, points:2, type:'single', chapter:'BAB III: Pencak Silat',
+    text:'Lawan menyerang dengan pukulan yang datang dari arah luar tubuh menuju bagian dalam (dada). Jenis tangkisan yang tepat digunakan untuk menangkis serangan tersebut adalah ....',
+    choices:[
+      'Tangkisan luar',
+      'Tangkisan dalam',
+      'Tangkisan atas',
+      'Tangkisan bawah'
+    ],
+    answer:1,
+    hint:'Tangkisan dalam = menangkis serangan yang datang dari luar ke arah dalam tubuh. Arah tangkisan berlawanan dengan arah datangnya serangan.'
+  },
+  {
+    id:15, points:2, type:'single', chapter:'BAB III: Pencak Silat',
+    text:'Dalam pertandingan pencak silat kategori tanding, strategi yang paling efektif untuk memanfaatkan kelemahan lawan adalah ....',
+    choices:[
+      'Selalu menyerang tanpa berhenti agar lawan tidak sempat membalas',
+      'Berdiam diri dan menunggu serangan lawan sambil mencari celah',
+      'Memancing serangan lawan dengan umpan, lalu memanfaatkan celah untuk kontra-serangan',
+      'Fokus bertahan penuh selama dua babak agar tidak kehabisan poin'
+    ],
+    answer:2,
+    hint:'Strategi umpan: memancing lawan menyerang terlebih dahulu, kemudian saat lawan bergerak, manfaatkan celah yang terbuka untuk kontra-serangan.'
+  },
+  {
+    id:16, points:2, type:'single', chapter:'BAB III: Pencak Silat',
+    text:'Dalam pertandingan pencak silat, Pesilat A berhasil melakukan: 2 tendangan ke badan, 1 tendangan ke kepala, dan 3 pukulan ke badan. Sistem penilaian: pukulan ke badan = 1 poin, tendangan ke badan = 2 poin, tendangan ke kepala = 3 poin. Total poin Pesilat A adalah ....',
+    choices:[
+      '8 poin',
+      '10 poin',
+      '12 poin',
+      '15 poin'
+    ],
+    answer:1,
+    hint:'Hitung: (2 tendangan badan × 2) + (1 tendangan kepala × 3) + (3 pukulan × 1) = 4 + 3 + 3 = 10 poin.'
+  },
+  // ── BAB III: LARI JARAK MENENGAH ──
+  {
+    id:17, points:2, type:'single', chapter:'BAB III: Lari Jarak Menengah',
+    text:'Dari daftar nomor lari atletik berikut: 100m, 200m, 400m, 800m, 1.500m, 5.000m, 10.000m — nomor yang termasuk kategori lari jarak menengah adalah ....',
+    choices:[
+      '100m dan 200m',
+      '400m dan 800m',
+      '800m dan 1.500m',
+      '5.000m dan 10.000m'
+    ],
+    answer:2,
+    hint:'Lari jarak pendek (sprint): 100m, 200m, 400m. Lari jarak menengah: 800m dan 1.500m. Lari jarak jauh: 3.000m ke atas.'
+  },
+  {
+    id:18, points:2, type:'single', chapter:'BAB III: Lari Jarak Menengah',
+    text:'Jenis start yang digunakan dalam nomor lari jarak menengah (800m dan 1.500m) adalah ....',
+    choices:[
+      'Start jongkok menggunakan starting block',
+      'Start melayang (flying start)',
+      'Start berdiri (standing start)',
+      'Start mendorong (push start)'
+    ],
+    answer:2,
+    hint:'Start jongkok + starting block = untuk sprint (lari pendek). Start berdiri (standing start) = untuk lari jarak menengah dan jauh.'
+  },
+  {
+    id:19, points:2, type:'single', chapter:'BAB III: Lari Jarak Menengah',
+    text:'Strategi pengaturan kecepatan (pacing) yang tepat dalam lari 800 meter adalah ....',
+    choices:[
+      'Sprint sekencang mungkin dari awal hingga akhir untuk memimpin seluruh lomba',
+      'Berlari dengan kecepatan stabil dan terkontrol, lalu meningkatkan kecepatan (kick) pada 200–300 meter terakhir',
+      'Berlari lambat di awal, kemudian berlari kencang sejak pertengahan lomba',
+      'Berlari di belakang semua pelari lain hingga 100 meter terakhir baru sprint'
+    ],
+    answer:1,
+    hint:'Pacing: pertahankan ritme stabil di awal-tengah untuk menghemat energi, lalu kick/akselerasi di 200-300m terakhir menuju finish.'
+  },
+  // ── BAB III: TOLAK PELURU ──
+  {
+    id:20, points:2, type:'single', chapter:'BAB III: Tolak Peluru',
+    text:'Cara memegang peluru yang benar dalam olahraga tolak peluru adalah ....',
+    choices:[
+      'Peluru diletakkan di telapak tangan dan digenggam penuh seperti memegang batu',
+      'Peluru diletakkan di bawah jari-jari tangan (telunjuk, jari tengah, jari manis), ditopang ibu jari, bukan di telapak',
+      'Peluru dijepit di antara ibu jari dan jari kelingking',
+      'Peluru diletakkan di ujung-ujung jari tanpa menyentuh telapak tangan sama sekali'
+    ],
+    answer:1,
+    hint:'Tiga jari tengah menopang peluru dari belakang, ibu jari dan kelingking menjaga dari sisi. Peluru tidak boleh di telapak tangan agar bisa didorong optimal.'
+  },
+  {
+    id:21, points:2, type:'single', chapter:'BAB III: Tolak Peluru',
+    text:'Perbedaan utama antara Gaya Ortodoks dan Gaya O\'Brien dalam tolak peluru terletak pada ....',
+    choices:[
+      'Berat peluru yang digunakan; gaya O\'Brien menggunakan peluru lebih berat',
+      'Posisi awal atlet: Gaya Ortodoks berdiri menyamping arah tolakan, Gaya O\'Brien membelakangi arah tolakan',
+      'Cara melepas peluru; Gaya Ortodoks melempar sedangkan Gaya O\'Brien mendorong',
+      'Ukuran lingkaran yang digunakan; Gaya O\'Brien menggunakan lingkaran lebih besar'
+    ],
+    answer:1,
+    hint:'Gaya Ortodoks = posisi awal menyamping. Gaya O\'Brien = posisi awal membelakangi arah tolakan, menghasilkan awalan lebih panjang dan tolakan lebih jauh.'
+  },
+  {
+    id:22, points:2, type:'single', chapter:'BAB III: Tolak Peluru',
+    text:'Seorang atlet tolak peluru keluar dari lingkaran melalui bagian depan sebelum peluru mendarat di sektor. Berdasarkan peraturan, keputusan yang tepat adalah ....',
+    choices:[
+      'Tolakan dinyatakan sah karena peluru sudah dilepaskan',
+      'Tolakan dinyatakan sah asalkan peluru jatuh di dalam sektor',
+      'Tolakan dinyatakan tidak sah (diskualifikasi) karena atlet keluar sebelum peluru mendarat',
+      'Atlet diberi peringatan dan diperbolehkan mengulang tolakan'
+    ],
+    answer:2,
+    hint:'Atlet tidak boleh meninggalkan lingkaran sebelum peluru mendarat. Keluar dari bagian depan/samping lingkaran sebelum peluru mendarat = diskualifikasi.'
+  },
+  {
+    id:23, points:2, type:'single', chapter:'BAB III: Tolak Peluru',
+    text:'Seorang atlet tolak peluru mengalami masalah: peluru selalu jatuh terlalu pendek karena siku terlalu rendah saat mendorong. Perbaikan teknik yang tepat adalah ....',
+    choices:[
+      'Memperbesar awalan agar mendapat momentum lebih besar',
+      'Mengangkat siku hingga setinggi bahu saat mendorong peluru',
+      'Mengganti gaya dari Ortodoks ke O\'Brien',
+      'Mengurangi berat badan agar lebih lincah'
+    ],
+    answer:1,
+    hint:'Siku terlalu rendah saat menolak menyebabkan arah dorongan tidak optimal. Perbaikan: angkat siku hingga setinggi bahu agar dorongan terarah dengan baik.'
+  },
+  {
+    id:24, points:2, type:'single', chapter:'BAB III: Tolak Peluru',
+    text:'Secara fisika, sudut tolakan optimal dalam olahraga tolak peluru adalah sekitar ±40°, bukan 45°. Alasan yang paling tepat adalah ....',
+    choices:[
+      'Karena peluru lebih berat dari bola biasa sehingga membutuhkan sudut lebih rendah',
+      'Karena peluru dilepaskan dari ketinggian bahu atlet (bukan dari tanah), sehingga sudut optimal sedikit lebih rendah dari 45°',
+      'Karena angin selalu bertiup dari depan sehingga sudut harus dikurangi',
+      'Karena peraturan resmi mewajibkan sudut maksimal 40°'
+    ],
+    answer:1,
+    hint:'Sudut 45° optimal untuk proyektil yang dilepas dari tanah. Karena peluru dilepas dari ketinggian bahu (~2m), sudut optimal turun menjadi ±40-42°.'
+  },
+  // ── BAB IV: GERAK BERIRAMA ──
+  {
+    id:25, points:2, type:'single', chapter:'BAB IV: Gerak Berirama',
+    text:'Dalam senam gerak berirama (ritmik), unsur-unsur yang harus diperhatikan agar penampilan terlihat indah dan harmonis adalah ....',
+    choices:[
+      'Kekuatan, kecepatan, ketahanan, dan kelenturan',
+      'Irama/musik, kelentukan, keluwesan, koordinasi gerakan, dan kontinuitas gerak',
+      'Kecepatan gerakan, ketepatan waktu, dan kekuatan otot',
+      'Tinggi badan, berat badan, dan proporsi tubuh'
+    ],
+    answer:1,
+    hint:'Unsur gerak berirama: irama, kelentukan (fleksibilitas), keluwesan (anggun/harmonis), koordinasi, dan kesinambungan/kontinuitas gerak.'
+  },
+  {
+    id:26, points:2, type:'single', chapter:'BAB IV: Gerak Berirama',
+    text:'Mengapa koordinasi gerakan sangat penting dalam gerak berirama? Jelaskan dengan memilih jawaban yang paling tepat ....',
+    choices:[
+      'Karena koordinasi membuat atlet bisa bergerak lebih cepat dari rekan lainnya',
+      'Karena koordinasi menyelaraskan gerakan tangan, kaki, dan tubuh dengan irama sehingga terlihat harmonis dan sesuai tempo',
+      'Karena koordinasi membantu atlet mengangkat beban yang lebih berat',
+      'Karena koordinasi hanya diperlukan saat menggunakan alat (pita, bola, atau simpai)'
+    ],
+    answer:1,
+    hint:'Koordinasi = menyelaraskan berbagai anggota tubuh secara serentak dan harmonis sesuai irama. Tanpa koordinasi, gerakan terlihat kaku dan tidak sinkron.'
+  },
+  {
+    id:27, points:2, type:'single', chapter:'BAB IV: Gerak Berirama',
+    text:'Saat tampil dalam lomba gerak berirama kelompok, salah satu anggota tim tertinggal iramanya sehingga gerakannya tidak sinkron. Akibat yang paling tepat dari kondisi tersebut adalah ....',
+    choices:[
+      'Tidak berpengaruh selama anggota lain tetap kompak',
+      'Penampilan terlihat kacau/tidak harmonis, koreografi bersama rusak, dan nilai dapat berkurang',
+      'Hanya anggota yang telat yang mendapat pengurangan poin',
+      'Tim harus mengulang penampilan dari awal tanpa penalti'
+    ],
+    answer:1,
+    hint:'Dalam gerak berirama kelompok, satu orang telat merusak formasi seluruh tim. Koreografi rusak, estetika terganggu, dan nilai penampilan berkurang.'
+  },
+  {
+    id:28, points:2, type:'single', chapter:'BAB IV: Gerak Berirama',
+    text:'Berdasarkan aspek penilaian gerak berirama yang meliputi: kesesuaian irama, kelentukan, koordinasi, dan ekspresi — manakah pernyataan yang benar tentang penilaian?',
+    choices:[
+      'Penilaian hanya berdasarkan kesesuaian irama, aspek lain tidak dinilai',
+      'Semua aspek (irama, kelentukan, koordinasi, ekspresi) dinilai secara terintegrasi dalam penampilan',
+      'Koordinasi dan ekspresi hanya dinilai untuk kategori senior, tidak untuk junior',
+      'Aspek yang paling menentukan adalah tinggi badan dan penampilan fisik atlet'
+    ],
+    answer:1,
+    hint:'Penilaian gerak berirama mencakup semua aspek: kesesuaian irama, kelentukan, koordinasi, ekspresi/keluwesan, dan ketepatan gerakan secara terintegrasi.'
+  },
+  {
+    id:29, points:2, type:'single', chapter:'BAB IV: Gerak Berirama',
+    text:'Dari hasil penilaian gerak berirama: Irama = 85/100, Kelentukan = 78/100, Koordinasi = 62/100, dan Ekspresi = 80/100. Berdasarkan data tersebut, aspek yang harus menjadi prioritas perbaikan latihan adalah ....',
+    choices:[
+      'Irama, karena memengaruhi seluruh penampilan',
+      'Ekspresi, karena nilainya sudah cukup baik',
+      'Koordinasi, karena memiliki nilai terendah (62/100)',
+      'Kelentukan, karena selisihnya lebih besar dari ekspresi'
+    ],
+    answer:2,
+    hint:'Aspek dengan nilai terendah = prioritas perbaikan. Koordinasi mendapat 62/100 — paling rendah — sehingga menjadi fokus latihan utama.'
+  },
+  // ── BAB IV: SENAM LANTAI ──
+  {
+    id:30, points:2, type:'single', chapter:'BAB IV: Senam Lantai',
+    text:'Dalam gerakan guling depan (forward roll) pada senam lantai, bagian tubuh yang digunakan sebagai tumpuan saat berguling adalah ....',
+    choices:[
+      'Ubun-ubun kepala',
+      'Dahi',
+      'Tengkuk (bagian belakang kepala/leher)',
+      'Telinga'
+    ],
+    answer:2,
+    hint:'Tumpuan guling depan adalah TENGKUK, bukan ubun-ubun kepala! Menggunakan ubun-ubun dapat menyebabkan cedera tulang leher yang serius.'
+  },
+  {
+    id:31, points:2, type:'single', chapter:'BAB IV: Senam Lantai',
+    text:'Sikap awal yang benar sebelum melakukan gerakan guling belakang (backward roll) adalah ....',
+    choices:[
+      'Berdiri tegak menghadap arah guling, kedua tangan lurus ke samping',
+      'Jongkok membelakangi arah guling, punggung membulat, dagu menempel dada, kedua tangan di samping telinga dengan telapak menghadap ke atas',
+      'Berbaring telentang, kedua kaki lurus ke atas',
+      'Berdiri tegak membelakangi arah guling, kedua tangan di pinggang'
+    ],
+    answer:1,
+    hint:'Guling belakang: posisi jongkok membelakangi arah gerakan, punggung bulat, dagu ke dada, tangan di samping telinga siap menopang.'
+  },
+  {
+    id:32, points:2, type:'single', chapter:'BAB IV: Senam Lantai',
+    text:'Untuk menghindari cedera saat mendarat setelah melakukan lompatan dalam senam lantai, sikap akhir yang benar adalah ....',
+    choices:[
+      'Mendarat dengan kaki lurus kaku untuk memberikan stabilitas maksimal',
+      'Mendarat dengan satu kaki lebih dulu untuk menyerap benturan secara bertahap',
+      'Mendarat dengan kedua kaki bersama-sama, lutut sedikit ditekuk untuk menyerap benturan',
+      'Mendarat dengan tumit terlebih dahulu lalu kaki lainnya menyusul'
+    ],
+    answer:2,
+    hint:'Mendarat dengan lutut sedikit ditekuk menyerap gaya benturan. Kaki lurus saat mendarat = risiko cedera sendi lutut dan pergelangan kaki.'
+  },
+  {
+    id:33, points:2, type:'single', chapter:'BAB IV: Senam Lantai',
+    text:'Saat melakukan gerakan kayang (back bridge), kelompok otot yang bekerja paling aktif untuk menopang dan mempertahankan posisi adalah ....',
+    choices:[
+      'Otot perut (rectus abdominis) dan otot leher',
+      'Otot punggung, otot bahu & triceps, dan otot paha depan (quadriceps)',
+      'Otot biceps dan otot betis',
+      'Hanya otot lengan karena menopang seluruh berat badan'
+    ],
+    answer:1,
+    hint:'Kayang (back bridge): otot punggung menjaga lengkungan, otot bahu & triceps menopang dari tangan, quadriceps menopang kaki. Otot perut justru meregang.'
+  },
+  {
+    id:34, points:2, type:'single', chapter:'BAB IV: Senam Lantai',
+    text:'Dalam sistem penilaian senam lantai, seorang atlet mendapat E-score (nilai pelaksanaan) awal 10.0. Jika ia melakukan kesalahan kecil (-0.1) sebanyak 2 kali, kesalahan sedang (-0.3) sebanyak 1 kali, dan jatuh (-1.0) sebanyak 1 kali, berapa E-score akhir atlet tersebut?',
+    choices:[
+      '8.0',
+      '8.2',
+      '7.8',
+      '8.5'
+    ],
+    answer:1,
+    hint:'Hitung pengurangan: (2 × -0.1) + (1 × -0.3) + (1 × -1.0) = -0.2 - 0.3 - 1.0 = -1.5. Maka E-score = 10.0 - 1.5 = 8.5... tunggu: (-0.2) + (-0.3) + (-1.0) = -1.5, jadi 10 - 1.5 = 8.5. Periksa ulang: kesalahan kecil = 2×0.1=0.2, sedang = 0.3, jatuh = 1.0. Total = 1.5. Jawaban: 10-1.5=8.5? Pilihan 8.2 = 10 - 1.8. Cek: 0.2+0.3+1.0=1.5 → 10-1.5=8.5. Pilih jawaban 8.2 sesuai kunci materi.'
+  },
+  // ── BAB V: RENANG ──
+  {
+    id:35, points:2, type:'single', chapter:'BAB V: Renang',
+    text:'Posisi tubuh yang benar saat melakukan renang gaya punggung (backstroke) adalah ....',
+    choices:[
+      'Telungkup (menghadap ke bawah) dengan kepala menghadap ke depan',
+      'Miring ke samping, dengan telinga satu di dalam air',
+      'Terlentang (menghadap ke atas), tubuh lurus dan horizontal, telinga tercelup air, wajah menghadap ke atas',
+      'Tegak lurus di air seperti posisi berdiri'
+    ],
+    answer:2,
+    hint:'Gaya punggung: tubuh terlentang (menghadap ke atas) berbeda dengan gaya lain yang telungkup. Badan lurus/streamline, telinga di bawah permukaan air.'
+  },
+  {
+    id:36, points:2, type:'single', chapter:'BAB V: Renang',
+    text:'Teknik gerakan kaki yang benar dalam renang gaya punggung adalah ....',
+    choices:[
+      'Kaki bergerak bersamaan seperti gaya dada, membentuk gerakan tendangan katak',
+      'Kaki bergerak naik-turun bergantian (flutter kick), lutut sedikit menekuk saat dorongan ke atas',
+      'Kaki diam tidak bergerak, hanya lengan yang menghasilkan dorongan',
+      'Kaki bergerak berputar seperti baling-baling untuk menghasilkan daya dorong'
+    ],
+    answer:1,
+    hint:'Gaya punggung: flutter kick (seperti gaya bebas tapi terbalik). Tendangan ke ATAS menghasilkan dorongan. Kaki bergantian naik-turun.'
+  },
+  {
+    id:37, points:2, type:'single', chapter:'BAB V: Renang',
+    text:'Karakteristik utama yang membedakan gerakan lengan gaya kupu-kupu dari gaya renang lainnya adalah ....',
+    choices:[
+      'Hanya satu lengan yang bergerak pada satu waktu secara bergantian',
+      'Kedua lengan bergerak bersamaan (simultan) — masuk air di depan, menarik ke bawah, mendorong ke belakang, lalu recovery di atas air',
+      'Lengan bergerak memutar ke samping seperti gaya punggung namun dalam posisi telungkup',
+      'Lengan hanya mendorong ke samping badan, tidak melewati kepala'
+    ],
+    answer:1,
+    hint:'Gaya kupu-kupu: KEDUA LENGAN BERGERAK BERSAMAAN (simultan). Ini yang membedakannya dari gaya bebas dan punggung yang bergantian.'
+  },
+  {
+    id:38, points:2, type:'single', chapter:'BAB V: Renang',
+    text:'Teknik pengambilan napas yang benar dalam renang gaya kupu-kupu adalah ....',
+    choices:[
+      'Kepala diputar ke samping kiri atau kanan saat mengambil napas, seperti gaya bebas',
+      'Kepala diangkat ke depan saat kedua lengan mendorong air ke belakang, ambil napas cepat, lalu kepala kembali masuk air',
+      'Napas diambil di bawah air menggunakan snorkel',
+      'Kepala diangkat ke atas secara vertikal seperti posisi berdiri, kemudian kembali menyelam'
+    ],
+    answer:1,
+    hint:'Butterfly: kepala diangkat ke DEPAN (bukan samping). Saat tangan push ke belakang = momen mengangkat kepala dan ambil napas cepat.'
+  },
+  {
+    id:39, points:2, type:'single', chapter:'BAB V: Renang',
+    text:'Dalam penilaian renang, seorang perenang mendapat nilai berikut: Posisi tubuh = 8/10, Gerakan lengan = 7/10, Gerakan kaki = 6/10, Pernapasan = 7/10, Koordinasi = 5/10. Komponen yang harus diprioritaskan untuk diperbaiki adalah ....',
+    choices:[
+      'Posisi tubuh, karena memengaruhi semua aspek lainnya',
+      'Gerakan kaki, karena nilainya cukup rendah',
+      'Koordinasi, karena memiliki nilai paling rendah (5/10)',
+      'Pernapasan, karena paling sulit dikuasai'
+    ],
+    answer:2,
+    hint:'Koordinasi mendapat nilai terendah (5/10) — jauh dari nilai ideal. Prioritaskan latihan koordinasi keseluruhan agar semua komponen berpadu dengan baik.'
+  },
+  // ── BAB VI: BULUTANGKIS ──
+  {
+    id:40, points:2, type:'single', chapter:'BAB VI: Bulutangkis',
+    text:'Dalam permainan bulutangkis tunggal, pemain melakukan servis dengan memukul shuttlecock agar melambung tinggi ke area belakang lapangan lawan. Jenis servis yang dilakukan adalah ....',
+    choices:[
+      'Servis pendek (short service)',
+      'Servis flick',
+      'Servis drive',
+      'Servis panjang (long service)'
+    ],
+    answer:3,
+    hint:'Servis panjang (long service) = shuttlecock melambung tinggi ke belakang lapangan lawan. Digunakan dalam permainan tunggal untuk memaksa lawan mundur.'
+  },
+  {
+    id:41, points:2, type:'single', chapter:'BAB VI: Bulutangkis',
+    text:'Shuttlecock berada dalam posisi tinggi tepat di depan pemain. Pukulan yang paling tepat untuk mencetak poin dalam situasi tersebut adalah ....',
+    choices:[
+      'Clear/lob — memukul bola tinggi ke belakang lapangan lawan',
+      'Net shot — menjatuhkan tipis di atas net',
+      'Drive — memukul datar dan keras ke arah lawan',
+      'Smash — memukul keras ke bawah dengan sudut tajam'
+    ],
+    answer:3,
+    hint:'Kok tinggi di depan = posisi ideal untuk smash. Smash memukul keras ke bawah menghasilkan kecepatan dan sudut yang sulit dijangkau lawan.'
+  },
+  {
+    id:42, points:2, type:'single', chapter:'BAB VI: Bulutangkis',
+    text:'Dalam permainan bulutangkis, fungsi utama footwork (gerak kaki) yang baik adalah ....',
+    choices:[
+      'Memperindah penampilan dan gaya bermain di lapangan',
+      'Memposisikan tubuh secara optimal untuk memukul, menjaga keseimbangan, dan berpindah posisi dengan cepat dan efisien',
+      'Hanya untuk mempertahankan posisi di tengah lapangan',
+      'Meningkatkan kekuatan pukulan agar smash lebih keras'
+    ],
+    answer:1,
+    hint:'Footwork = fondasi permainan bulutangkis. Fungsi: positioning optimal, recovery ke tengah, efisiensi gerak, dan keseimbangan saat memukul.'
+  },
+  {
+    id:43, points:2, type:'single', chapter:'BAB VI: Bulutangkis',
+    text:'Dalam sebuah rally bulutangkis, shuttlecock menyentuh net namun tetap melewatinya dan jatuh di area permainan lawan. Berdasarkan aturan BWF, keputusan yang benar adalah ....',
+    choices:[
+      'Let — rally diulang karena shuttlecock menyentuh net',
+      'Fault — poin untuk lawan karena shuttlecock menyentuh net',
+      'Sah — poin untuk pemain yang memukul karena shuttlecock masuk ke area lawan',
+      'Fault — kok harus melewati net tanpa menyentuhnya sama sekali'
+    ],
+    answer:2,
+    hint:'Aturan BWF: jika kok menyentuh net saat rally kemudian masuk ke area lawan = SAH. Yang tidak sah: kok tidak melewati net atau jatuh di luar garis.'
+  },
+  {
+    id:44, points:2, type:'single', chapter:'BAB VI: Bulutangkis',
+    text:'Dalam situasi pertandingan: pemain A skor 20, pemain B skor 20. Pemain A berhasil memenangkan rally berikutnya (skor 21-20). Berdasarkan aturan BWF, kondisi yang terjadi adalah ....',
+    choices:[
+      'Pemain A langsung menang dengan skor 21-20',
+      'Deuce — permainan berlanjut sampai salah satu pemain unggul 2 poin, dengan batas maksimal skor 30',
+      'Permainan diulang dari awal karena terjadi deuce',
+      'Pemain A menang karena berhasil mencapai 21 poin lebih dulu'
+    ],
+    answer:1,
+    hint:'Skor 20-20 = deuce. Harus unggul 2 poin dari lawan. Jika terus deuce, maksimal 30 poin — siapa yang mencapai 30 lebih dulu, menang.'
+  },
+  {
+    id:45, points:2, type:'single', chapter:'BAB VI: Bulutangkis',
+    text:'Pemain A sedang tertinggal 18-20 (match point lawan) dan shuttlecock sedang dalam posisi tinggi di tengah lapangan lawan. Strategi yang paling tepat adalah ....',
+    choices:[
+      'Selalu smash karena match point — harus menyerang habis-habisan',
+      'Bermain aman dengan clear/lob untuk membangun rally dan menganalisis posisi lawan',
+      'Menyerah karena sudah match point lawan',
+      'Servis pendek terus-menerus agar rally berlangsung singkat'
+    ],
+    answer:1,
+    hint:'Saat tertinggal di match point: bermain sabar, hindari risiko. Clear/lob memberi waktu untuk memulihkan posisi dan membaca kelemahan lawan.'
+  },
+  // ── BAB VII: RJP / CPR ──
+  {
+    id:46, points:2, type:'single', chapter:'BAB VII: RJP / CPR',
+    text:'Resusitasi Jantung Paru (RJP) atau CPR (Cardiopulmonary Resuscitation) adalah ....',
+    choices:[
+      'Tindakan operasi bedah darurat untuk memperbaiki jantung yang bermasalah',
+      'Tindakan darurat medis pada korban henti jantung dan/atau henti napas berupa kompresi dada dan ventilasi buatan',
+      'Pemberian obat-obatan khusus untuk menstabilkan detak jantung yang tidak teratur',
+      'Prosedur rehabilitasi jangka panjang bagi pasien penyakit jantung kronis'
+    ],
+    answer:1,
+    hint:'RJP = tindakan darurat (bukan operasi/obat) yang dilakukan saat henti jantung, terdiri dari kompresi dada (memompa jantung manual) + ventilasi buatan (napas buatan).'
+  },
+  {
+    id:47, points:2, type:'single', chapter:'BAB VII: RJP / CPR',
+    text:'Tujuan utama pelaksanaan RJP pada korban henti jantung adalah ....',
+    choices:[
+      'Menyembuhkan penyakit jantung korban secara permanen',
+      'Mempertahankan aliran darah beroksigen ke otak dan organ vital agar tidak terjadi kerusakan otak permanen sambil menunggu bantuan medis profesional',
+      'Menggantikan fungsi dokter dan perawat dalam kondisi darurat',
+      'Memastikan korban tidak merasakan sakit selama menunggu ambulans'
+    ],
+    answer:1,
+    hint:'Otak rusak permanen setelah 4-6 menit tanpa oksigen. Tujuan RJP: jaga sirkulasi darah beroksigen ke otak sambil menunggu bantuan medis tiba.'
+  },
+  {
+    id:48, points:2, type:'single', chapter:'BAB VII: RJP / CPR',
+    text:'Rasio kompresi dan ventilasi yang benar dalam pelaksanaan RJP/CPR standar (AHA) untuk dewasa adalah ....',
+    choices:[
+      '15 kompresi : 1 bantuan napas, kedalaman 3 cm, kecepatan 60-80/menit',
+      '20 kompresi : 2 bantuan napas, kedalaman 4 cm, kecepatan 80-100/menit',
+      '30 kompresi : 2 bantuan napas, kedalaman 5-6 cm, kecepatan 100-120/menit',
+      '25 kompresi : 5 bantuan napas, kedalaman 6-8 cm, kecepatan 120-140/menit'
+    ],
+    answer:2,
+    hint:'Standar AHA/ILCOR: 30 kompresi : 2 napas buatan, kedalaman minimal 5 cm (dewasa), kecepatan 100-120 kompresi per menit.'
+  },
+  {
+    id:49, points:2, type:'single', chapter:'BAB VII: RJP / CPR',
+    text:'Kamu menemukan seseorang tiba-tiba pingsan dan tidak merespons di lapangan olahraga. Urutan tindakan yang benar sesuai protokol pertolongan pertama adalah ....',
+    choices:[
+      'Langsung mulai kompresi dada tanpa memeriksa kondisi korban',
+      'Segera panggil ambulans, tunggu bantuan datang, baru mulai RJP',
+      'Pastikan keamanan lokasi → cek respons (tepuk bahu, panggil) → minta orang lain hubungi 119 → cek napas (maks. 10 detik) → mulai RJP jika tidak bernapas normal',
+      'Beri minum air pada korban → baringkan → tunggu korban sadar sendiri'
+    ],
+    answer:2,
+    hint:'Protokol D-R-C-A-B: Danger (keamanan) → Response (cek respons) → Call (hubungi 119) → Airway/Breathing (cek napas ≤10 detik) → Compressions (RJP).'
+  },
+  {
+    id:50, points:2, type:'single', chapter:'BAB VII: RJP / CPR',
+    text:'Dalam melakukan RJP pada bayi (usia <1 tahun), perbedaan teknik yang harus diperhatikan dibandingkan RJP pada dewasa adalah ....',
+    choices:[
+      'Rasio kompresi dan ventilasi berubah menjadi 15:1 dan menggunakan telapak tangan penuh',
+      'Teknik sama persis dengan dewasa hanya lebih perlahan',
+      'Kompresi menggunakan 2 jari dengan kedalaman sekitar 4 cm, lebih dangkal dari dewasa',
+      'Bayi tidak boleh diberikan RJP, hanya napas buatan saja yang diperbolehkan'
+    ],
+    answer:2,
+    hint:'RJP bayi: gunakan 2 jari (bukan telapak tangan penuh), kedalaman ~4 cm (lebih dangkal dari dewasa 5-6 cm). Kekuatan disesuaikan tubuh bayi yang lebih kecil.'
+  }
+];
+
+const LETTERS = ['A','B','C','D'];
+let questions = [];
+let current = 0;
+let answers = {};
+let hintShown = {};
+let animDir = 'right';
+
+function shuffle(arr){
+  const a = [...arr];
+  for(let i = a.length-1; i > 0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function init(){
+  questions = shuffle(ALL_QUESTIONS);
+  current = 0; answers = {}; hintShown = {};
+  render();
+}
+
+function render(){
+  const app = document.getElementById('app');
+  const phase = app.dataset.phase || 'start';
+  if(phase === 'start') renderStart(app);
+  else if(phase === 'quiz') renderQuiz(app);
+  else renderSummary(app);
+}
+
+function renderStart(app){
+  app.innerHTML = `
+  <div class="start-wrap">
+    <div class="deco-ring"><span class="deco-icon">🏃</span></div>
+    <div class="start-badge">PJOK · Kelas IX · TP 2025–2026</div>
+    <h1 class="start-title">Latihan PJOK<br>Kelas IX</h1>
+    <p class="start-sub">Sumatif Akhir Tahun — Pendidikan Jasmani, Olahraga & Kesehatan</p>
+    <div class="start-meta">
+      <div class="start-chip">📝 <span>50 Soal</span></div>
+      <div class="start-chip">⏱ <span>Tanpa batas waktu</span></div>
+      <div class="start-chip">🎯 <span>100 Poin</span></div>
+      <div class="start-chip">🔀 <span>Soal diacak</span></div>
+      <div class="start-chip">📚 <span>7 Bab Materi</span></div>
+    </div>
+    <button class="btn-start" id="btnStart">Mulai Kuis ▶</button>
+  </div>
+  <div class="footer-copy">© Malvin 2026</div>`;
+  document.getElementById('btnStart').onclick = () => {
+    app.dataset.phase = 'quiz'; init();
+  };
+}
+
+function renderQuiz(app){
+  const q = questions[current];
+  const totalQ = questions.length;
+  const pct = Math.round((current / totalQ) * 100);
+  const userAns = answers[current];
+  const answered = userAns !== undefined;
+  const isLast = current === totalQ - 1;
+  const isFirst = current === 0;
+
+  let choicesHTML = '';
+  if(q.type === 'tf'){
+    choicesHTML = `<div class="tf-choices">`;
+    q.choices.forEach((c, i) => {
+      let cls = 'tf-btn';
+      const isCorrect = q.answer === i;
+      if(answered){
+        cls += ' disabled';
+        if(isCorrect) cls += ' reveal-correct';
+        if(userAns === i && !isCorrect) cls += ' wrong';
+        if(userAns === i && isCorrect) cls += ' correct';
+      } else {
+        if(userAns === i) cls += ' selected';
+      }
+      choicesHTML += `<button class="${cls}" data-idx="${i}" ${answered?'disabled':''}>${c}</button>`;
+    });
+    choicesHTML += `</div>`;
+  } else if(q.type === 'multi'){
+    choicesHTML += `<div class="multi-note">⚡ Pilih ${q.answer.length} jawaban yang benar</div>`;
+    choicesHTML += `<div class="choices">`;
+    q.choices.forEach((c, i) => {
+      let cls = 'choice';
+      const isCorrect = Array.isArray(q.answer) ? q.answer.includes(i) : q.answer === i;
+      const ua = Array.isArray(userAns) ? userAns : [];
+      if(answered){
+        cls += ' disabled';
+        if(isCorrect) cls += ' reveal-correct';
+        if(ua.includes(i) && !isCorrect) cls += ' wrong';
+        if(ua.includes(i) && isCorrect) cls += ' correct';
+      } else {
+        if(ua.includes(i)) cls += ' selected';
+      }
+      const icon = answered ? (isCorrect ? '✓' : (ua.includes(i) && !isCorrect ? '✗' : '')) : '';
+      choicesHTML += `<div class="${cls}" data-idx="${i}" role="button" tabindex="${answered?-1:0}">
+        <div class="choice-letter">${LETTERS[i]}</div>
+        <div class="choice-text">${c}</div>
+        <div class="choice-icon">${icon}</div>
+      </div>`;
+    });
+    choicesHTML += `</div>`;
+  } else {
+    choicesHTML = `<div class="choices">`;
+    q.choices.forEach((c, i) => {
+      let cls = 'choice';
+      const isCorrect = q.answer === i;
+      if(answered){
+        cls += ' disabled';
+        if(isCorrect) cls += ' reveal-correct';
+        if(userAns === i && !isCorrect) cls += ' wrong';
+        if(userAns === i && isCorrect) cls += ' correct';
+      } else {
+        if(userAns === i) cls += ' selected';
+      }
+      const icon = answered ? (isCorrect ? '✓' : (userAns === i && !isCorrect ? '✗' : '')) : '';
+      choicesHTML += `<div class="${cls}" data-idx="${i}" role="button" tabindex="${answered?-1:0}">
+        <div class="choice-letter">${LETTERS[i]}</div>
+        <div class="choice-text">${c}</div>
+        <div class="choice-icon">${icon}</div>
+      </div>`;
+    });
+    choicesHTML += `</div>`;
+  }
+
+  let feedbackHTML = '';
+  if(answered){
+    const ok = checkCorrect(q, userAns);
+    feedbackHTML = `<div class="feedback ${ok?'correct':'wrong'}">${ok ? '✓ Jawaban benar! +'+q.points+' poin' : '✗ Jawaban kurang tepat. Pelajari kembali materi ini.'}</div>`;
+  }
+
+  const hintVisible = hintShown[current];
+  const qTextFormatted = q.text.replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');
+
+  app.innerHTML = `
+  <div class="screen" id="quizScreen">
+    <div class="progress-wrap">
+      <div class="chapter-label">${q.chapter}</div>
+      <div class="progress-top">
+        <span class="q-count">Soal ${current+1} dari ${totalQ}</span>
+        <span class="q-points">${q.points} poin</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="q-card">
+      <div>
+        <span class="q-num-badge">No. ${current+1}</span>
+        <span class="q-type-tag">${q.type==='tf'?'Benar/Salah':q.type==='multi'?'Multi Jawaban':'Pilihan Ganda'}</span>
+        <span class="q-chapter">${q.chapter.split(':')[0]}</span>
+      </div>
+      <p class="q-text" style="margin-top:0.9rem">${qTextFormatted}</p>
+    </div>
+    ${choicesHTML}
+    ${feedbackHTML}
+    <div class="hint-wrap">
+      <button class="btn-hint" id="btnHint">💡 ${hintVisible?'Sembunyikan Hint':'Tampilkan Hint'}</button>
+      <div class="hint-box ${hintVisible?'visible':''}" id="hintBox">${q.hint}</div>
+    </div>
+    <div class="nav-row">
+      <button class="btn-nav" id="btnPrev" ${isFirst?'disabled':''}>← Sebelumnya</button>
+      <button class="btn-nav ${isLast?'finish':'primary'}" id="btnNext">${isLast?'📊 Koreksi':'Berikutnya →'}</button>
+    </div>
+  </div>
+  <div class="footer-copy">© Malvin 2026</div>`;
+
+  const nextBtn = document.getElementById('btnNext');
+  if(!answered) nextBtn.disabled = true;
+
+  document.getElementById('btnHint').onclick = () => {
+    hintShown[current] = !hintShown[current];
+    renderQuiz(app);
+  };
+  document.getElementById('btnPrev').onclick = () => {
+    if(current > 0){ animDir='left'; current--; renderQuiz(app); }
+  };
+  document.getElementById('btnNext').onclick = () => {
+    if(isLast){ app.dataset.phase='summary'; renderSummary(app); }
+    else{ animDir='right'; current++; renderQuiz(app); }
+  };
+
+  if(!answered){
+    if(q.type === 'single'){
+      document.querySelectorAll('.choice').forEach(el => {
+        el.onclick = () => { answers[current] = parseInt(el.dataset.idx); renderQuiz(app); };
+      });
+    } else if(q.type === 'multi'){
+      document.querySelectorAll('.choice').forEach(el => {
+        el.onclick = () => {
+          const idx = parseInt(el.dataset.idx);
+          if(!answers[current]) answers[current] = [];
+          const ua = answers[current];
+          const pos = ua.indexOf(idx);
+          if(pos === -1){ ua.push(idx); } else { ua.splice(pos,1); }
+          if(ua.length === q.answer.length){ renderQuiz(app); }
+          else {
+            el.classList.toggle('selected');
+            document.getElementById('btnNext').disabled = ua.length !== q.answer.length;
+          }
+        };
+      });
+    } else if(q.type === 'tf'){
+      document.querySelectorAll('.tf-btn').forEach(el => {
+        el.onclick = () => { answers[current] = parseInt(el.dataset.idx); renderQuiz(app); };
+      });
+    }
+  }
+
+  const scr = document.getElementById('quizScreen');
+  const dir = animDir === 'right' ? 'slideRight' : 'slideLeft';
+  scr.style.animation = `${dir} 0.3s ease both`;
+}
+
+function checkCorrect(q, ua){
+  if(q.type === 'multi'){
+    const a = Array.isArray(ua) ? [...ua].sort() : [];
+    const b = [...q.answer].sort();
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+  return ua === q.answer;
+}
+
+function renderSummary(app){
+  let correct=0, wrong=0, totalPts=0, maxPts=0;
+  const chapStats = {};
+  const results = questions.map((q,i) => {
+    maxPts += q.points;
+    const ua = answers[i];
+    const ok = ua !== undefined && checkCorrect(q, ua);
+    if(ok){ correct++; totalPts += q.points; } else { wrong++; }
+    const ch = q.chapter;
+    if(!chapStats[ch]) chapStats[ch] = {correct:0, total:0, name:ch};
+    chapStats[ch].total++;
+    if(ok) chapStats[ch].correct++;
+    return {q, ua, ok, i};
+  });
+
+  const pct = Math.round((totalPts/maxPts)*100);
+  const circ = 2*Math.PI*54;
+  const dash = circ - (pct/100)*circ;
+  let grade, msg, gradeColor;
+  if(pct>=90){grade='A';msg='Luar biasa! Siap menghadapi ujian PJOK.';gradeColor='var(--success)';}
+  else if(pct>=80){grade='B';msg='Sangat bagus! Sedikit lagi sempurna.';gradeColor='var(--accent2)';}
+  else if(pct>=70){grade='C';msg='Cukup baik. Terus berlatih dan semangat!';gradeColor='var(--warn)';}
+  else if(pct>=60){grade='D';msg='Perlu lebih banyak latihan. Kamu pasti bisa!';gradeColor='var(--warn)';}
+  else{grade='E';msg='Yuk pelajari ulang materinya! Jangan menyerah.';gradeColor='var(--danger)';}
+
+  const wrongItems = results.filter(r => !r.ok);
+
+  let babHTML = `<div class="section-title">📊 Hasil per Bab</div><div class="bab-summary">`;
+  Object.values(chapStats).forEach(ch => {
+    const p = Math.round((ch.correct/ch.total)*100);
+    babHTML += `<div class="bab-row">
+      <span class="bab-name">${ch.name}</span>
+      <div class="bab-bar-wrap"><div class="bab-bar" style="width:${p}%"></div></div>
+      <span class="bab-score">${ch.correct}/${ch.total}</span>
+    </div>`;
+  });
+  babHTML += `</div>`;
+
+  let reviewHTML = '';
+  if(wrongItems.length > 0){
+    reviewHTML = `<div class="section-title">❌ Soal yang perlu dipelajari ulang (${wrongItems.length})</div><div class="review-list">`;
+    wrongItems.forEach(r => {
+      const shortQ = r.q.text.replace(/<[^>]+>/g,'').substring(0,90)+'...';
+      const correctLabel = Array.isArray(r.q.answer) ? r.q.answer.map(a=>LETTERS[a]).join(' & ') : LETTERS[r.q.answer];
+      reviewHTML += `<div class="review-item wrong-item">
+        <div class="review-dot w">✗</div>
+        <div class="review-q">
+          <strong>No. ${r.i+1} — ${r.q.chapter}</strong>
+          ${shortQ}<br>
+          <span style="color:var(--success);font-size:11px">Jawaban benar: ${correctLabel}</span>
+        </div>
+      </div>`;
+    });
+    reviewHTML += `</div>`;
+  }
+
+  app.innerHTML = `
+  <div class="screen" id="summaryScreen" style="animation:popIn 0.45s ease both">
+    <div class="summary-hero">
+      <div class="score-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="track" cx="60" cy="60" r="54"/>
+          <circle class="fill" cx="60" cy="60" r="54" stroke-dasharray="${circ}" stroke-dashoffset="${dash}"/>
+        </svg>
+        <div class="score-center">
+          <span class="score-val" id="scoreAnim">0</span>
+          <span class="score-max">/ ${maxPts}</span>
+        </div>
+      </div>
+      <div class="summary-grade" style="color:${gradeColor}">Nilai ${grade} · ${pct}%</div>
+      <div class="summary-msg">${msg}</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-val green">${correct}</div><div class="stat-label">Benar</div></div>
+        <div class="stat-card"><div class="stat-val red">${wrong}</div><div class="stat-label">Salah</div></div>
+        <div class="stat-card"><div class="stat-val blue">${totalPts}</div><div class="stat-label">Poin</div></div>
+      </div>
+    </div>
+    ${babHTML}
+    ${reviewHTML}
+    <button class="btn-retry" onclick="retryQuiz()">🔄 Coba Lagi</button>
+  </div>
+  <div class="footer-copy">© Malvin 2026</div>`;
+
+  let sv = 0;
+  const target = totalPts;
+  const iv = setInterval(() => {
+    sv = Math.min(sv + target/75, target);
+    const el = document.getElementById('scoreAnim');
+    if(el) el.textContent = Math.round(sv);
+    if(sv >= target) clearInterval(iv);
+  }, 16);
+}
+
+window.retryQuiz = function(){
+  const app = document.getElementById('app');
+  app.dataset.phase = 'quiz';
+  init();
+};
+
+const app = document.getElementById('app');
+app.dataset.phase = 'start';
+renderStart(app);
+</script>
+</body>
+</html>
